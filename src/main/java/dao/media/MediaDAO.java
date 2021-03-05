@@ -50,8 +50,9 @@ public class MediaDAO {
         return null;
     }
 
-
-    public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
+// chưa thấy dùng tới tbname. String tbname,
+    
+    public void updateMediaFieldById( int id, String field, Object value) throws SQLException {
         Statement stm = AIMSDB.getConnection().createStatement();
         if (value instanceof String){
             value = "\"" + value + "\"";

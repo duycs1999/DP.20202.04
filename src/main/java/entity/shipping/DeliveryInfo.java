@@ -20,8 +20,8 @@ public class DeliveryInfo {
         this.shippingInstructions = shippingInstructions;
         this.distanceCalculator = distanceCalculator;
     }
-
-    public int calculateShippingFee(Order order) {
+// 
+    public int calculateShippingFee(Order order) {                           // stamp coupling
         int distance = distanceCalculator.calculateDistance(address, province);
         return (int) (distance * 1.2);
     }

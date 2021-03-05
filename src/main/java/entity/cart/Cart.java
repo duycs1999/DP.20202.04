@@ -31,6 +31,7 @@ public class Cart {
         lstCartItem.clear();
     }
 
+
     public int getTotalMedia(){
         int total = 0;
         for (Object obj : lstCartItem) {
@@ -60,7 +61,8 @@ public class Cart {
         if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
 
-    public CartItem checkMediaInCart(Media media){
+    public CartItem checkMediaInCart(Media media){                             // stamp coupling do truyền tham số đối tượng 
+    	                                                                       // media nhưng chỉ dùng mỗi phương thức getId()
         for (CartItem cartItem : lstCartItem) {
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;
         }

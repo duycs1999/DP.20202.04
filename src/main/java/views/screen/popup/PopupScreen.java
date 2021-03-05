@@ -25,8 +25,6 @@ public class PopupScreen extends BaseScreenHandler {
         super(stage, ViewsConfig.POPUP_PATH);
     }
 
-// Vi phạm Control Coupling vì có sử dụng tham số kiểu boolean làm điều hướng xử lý
-
     private static PopupScreen popup(String message, String imagePath, Boolean undecorated) throws IOException{
         PopupScreen popup = new PopupScreen(new Stage());
         if (undecorated) popup.stage.initStyle(StageStyle.UNDECORATED);

@@ -34,7 +34,8 @@ public class Order {
             orderItems.add(orderItem);
         }
         this.orderMediaList = Collections.unmodifiableList(orderItems);
-        this.subtotal = cart.calSubtotal();
+        this.subtotal = cart.calSubtotal();                               // stamp coupling, truyền đối tượng cart 
+                                                                          // nhưng chỉ sử dụng calSubtotal();
         this.tax = (int) (ViewsConfig.PERCENT_VAT/100) * subtotal;
     }
 
