@@ -11,7 +11,9 @@ import java.util.Locale;
  * @author
  */
 public class ViewsConfig {
+
 	// common coupling: Dữ liệu được share public nhưng chỉ get được chứ không thay đổi được
+
     // static resource
     public static final String IMAGE_PATH = "src/main/resources/assets/images";
     public static final String INVOICE_SCREEN_PATH = "/views/fxml/invoice.fxml";

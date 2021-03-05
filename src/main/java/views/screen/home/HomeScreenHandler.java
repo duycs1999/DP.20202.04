@@ -37,7 +37,9 @@ import views.screen.popup.PopupScreen;
 
 
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
+
 // Common Coupling: Có thể thay đổi được từ bất cứ đâu
+
     public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
 
     @FXML
