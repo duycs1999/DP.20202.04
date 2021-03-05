@@ -97,6 +97,9 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @return the term as {@link String String}
 	 * @throws IllegalArgumentException
 	 */
+
+	// Vi phạm Control Coupling vì sử dụng hai tham số dạng String và int để điều hướng xử lý
+
 	private static String getNextTerm(String str, int idx) {
 		if (str == null || idx >= str.length() || str.charAt(idx) != '"') {
 			throw new IllegalArgumentException("Cannot resolve the input.");
@@ -130,6 +133,9 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @return the term as {@link MyMap MyMap}
 	 * @throws IllegalArgumentException
 	 */
+
+	// Vi phạm Control Coupling vì sử dụng hai tham số dạng String và int để điều hướng xử lý
+
 	public static MyMap toMyMap(String str, int idx) throws IllegalArgumentException {
 		if (str == null || str.length() < 2 || str.charAt(idx) != '{') {
 			throw new IllegalArgumentException("Cannot resolve the input.");

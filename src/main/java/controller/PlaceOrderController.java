@@ -22,7 +22,6 @@ import java.util.regex.Pattern;
  * @author nguyenlm
  */
 
-
 public class PlaceOrderController extends BaseController {
 
     /**
@@ -83,7 +82,7 @@ public class PlaceOrderController extends BaseController {
    * @throws InterruptedException
    * @throws IOException
    */
-
+  
     // control coupling do khi thay đổi trong phương thức này dẫn đến phương thức gọi phương thức này bị thay đổi
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         if (validatePhoneNumber(info.get("phone"))
