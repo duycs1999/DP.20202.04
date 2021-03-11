@@ -7,7 +7,8 @@ import java.util.List;
 import common.exception.MediaNotAvailableException;
 import entity.media.Media;
 
-public class Cart {
+public class Cart {    // coincidental cohesion
+	
     
     private List<CartItem> lstCartItem;
 
@@ -61,8 +62,8 @@ public class Cart {
         if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
 
-    public CartItem checkMediaInCart(Media media){                             // stamp coupling do truyền tham số đối tượng 
-    	                                                                       // media nhưng chỉ dùng mỗi phương thức getId()
+    public CartItem checkMediaInCart(Media media){                             // stamp coupling do truyá»�n tham sá»‘ Ä‘á»‘i tÆ°á»£ng 
+    	                                                                       // media nhÆ°ng chá»‰ dÃ¹ng má»—i phÆ°Æ¡ng thá»©c getId()
         for (CartItem cartItem : lstCartItem) {
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;
         }
