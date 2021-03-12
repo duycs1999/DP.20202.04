@@ -31,14 +31,14 @@ public class AuthenticationController extends BaseController {
             return true;
         }
     }
-// control coupling
+
     public User getMainUser() throws ExpiredSessionException {
         if (SessionInformation.mainUser == null || SessionInformation.expiredTime == null || SessionInformation.expiredTime.isBefore(LocalDateTime.now())) {
             logout();
             throw new ExpiredSessionException();
         } else return SessionInformation.mainUser.cloneInformation();
     }
-// content coupling do thay đổi dữ liệu của SessionInformation
+
     public void login(String email, String password) throws Exception {
         try {
             User user = new UserDAO().authenticate(email, md5(password));
@@ -50,7 +50,6 @@ public class AuthenticationController extends BaseController {
         }
     }
 
-    // common coupling và content coupling do truy cập trực tiếp vào SessionInformation và thay đổi dữ liệu của SessionInformation
     public void logout() {
         SessionInformation.mainUser = null;
         SessionInformation.expiredTime = null;

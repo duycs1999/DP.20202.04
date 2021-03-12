@@ -27,6 +27,7 @@ import java.util.regex.Pattern;
 
 // Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh tu
 
+
 public class PlaceOrderController extends BaseController {
 
     /**
@@ -87,16 +88,13 @@ public class PlaceOrderController extends BaseController {
    * @throws InterruptedException
    * @throws IOException
    */
-
-    // control coupling do khi thay đổi trong phương thức này dẫn đến phương thức gọi phương thức này bị thay đổi
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         if (validatePhoneNumber(info.get("phone"))
         || validateName(info.get("name"))
         || validateAddress(info.get("address"))) return;
         else throw new InvalidDeliveryInfoException();
     }
-
-    //control coupling
+    
     public boolean validatePhoneNumber(String phoneNumber) {
         if (phoneNumber.length() != 10) return false;
         if (!phoneNumber.startsWith("0")) return false;
@@ -107,8 +105,7 @@ public class PlaceOrderController extends BaseController {
         }
         return true;
     }
-
-    //control coupling
+    
     public boolean validateName(String name) {
         if (Objects.isNull(name)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
@@ -116,8 +113,7 @@ public class PlaceOrderController extends BaseController {
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
-
-    //control coupling
+    
     public boolean validateAddress(String address) {
         if (Objects.isNull(address)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
