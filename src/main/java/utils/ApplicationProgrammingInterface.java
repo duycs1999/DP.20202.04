@@ -63,7 +63,8 @@ public class ApplicationProgrammingInterface {
 		LOGGER.info("Respone Info: " + response.toString());
 		return response.toString();
 	}
-
+// Coincidence cohesion
+// Vi method nay duong nhu khong lien quan gi den cac phuong thuc hay thuoc tinh khac, nhung cai ma deu cung chung muc dich chuc nang cho lop nay	
 	private static HttpURLConnection setupConnection(String url) throws IOException {
 		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 		conn.setDoInput(true);

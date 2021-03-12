@@ -27,7 +27,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
-
+// Procedural cohesion
+// Cac methods trong lop thu chien theo lan luot tung cong viec mot cua qua trinh xu ly Ship, do do no vi pham Procedural cohesion
 public class ShippingScreenHandler extends BaseScreenHandler {
 
 	private static final Logger LOGGER = Utils.getLogger(ShippingScreenHandler.class.getName());

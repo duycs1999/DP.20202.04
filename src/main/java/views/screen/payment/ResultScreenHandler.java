@@ -60,6 +60,8 @@ public class ResultScreenHandler extends BaseScreenHandler {
 	@FXML
 	private Label messageLabel;
 
+// Logical Cohesion
+// Vi method nay chi lien quan ve mat logic. Con ve mat chuc nang thi method khong phu hop de dat trong lop nay
 	@FXML
 	void confirmPayment(MouseEvent event) throws IOException {
 		homeScreenHandler.show();
