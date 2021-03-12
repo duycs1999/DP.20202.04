@@ -1,0 +1,12 @@
+#Coupling:
+    - phần exception tránh được Control coupling vì đã chia ra thành các class phụ trách các nhiệm vụ khác nhau.
+    (nếu không chia như vậy mà dùng try catch thì sẽ cần truyền flag parameter gây ra Control coupling)
+
+    - không có Stamp coupling
+
+    Tóm lại,các class trong phần exception non-cuopling
+
+#Cohesion:
+    Đã xử lí được logical cohesion bằng cách viết 1 class cha rồi kế thừa
+
+*nhận xét trên đúng cho các class trong common/exception
