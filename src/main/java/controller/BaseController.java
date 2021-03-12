@@ -12,6 +12,9 @@ import entity.media.Media;
  */
 
 // Functional Cohesion
+
+// Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh
+
 public class BaseController {
     
     /**
