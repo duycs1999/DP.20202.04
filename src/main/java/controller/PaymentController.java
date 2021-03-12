@@ -22,6 +22,8 @@ import subsystem.InterbankSubsystem;
  *
  */
 
+// Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh
+
 public class PaymentController extends BaseController {
 
 	/**

@@ -12,6 +12,8 @@ import java.util.List;
 /**
  * @author
  */
+
+  // Coincidental Cohesion , phuong thuc updateMediaFieldById nen dat trong lop khac
 public class MediaDAO {
 
     public List getAllMedia() throws SQLException {
