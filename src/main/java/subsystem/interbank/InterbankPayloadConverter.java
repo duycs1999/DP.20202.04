@@ -42,7 +42,8 @@ public class InterbankPayloadConverter {
 
         return ((MyMap) requestMap).toJSON();
     }
-
+//vi pham nguyen ly OCD 
+    // khi them mot loai phuong thuc thanh toan moi thì phai thay doi
     /**
      * Read the response from interbank server
      * @param responseText
