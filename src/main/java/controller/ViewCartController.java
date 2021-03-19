@@ -9,7 +9,7 @@ import entity.cart.Cart;
  * @author nguyenlm
  */
 
- // Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh
+ // Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh tu
  
 public class ViewCartController extends BaseController{
     

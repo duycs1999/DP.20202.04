@@ -22,7 +22,10 @@ import subsystem.InterbankSubsystem;
  *
  */
 
-// Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh
+// Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh tu
+
+ //SOLID: Vi phạm nguyên lý OCP vì khi thêm phương thức thanh toán sẽ phải sửa lại code ở đây
+
 
 public class PaymentController extends BaseController {
 
