@@ -22,12 +22,16 @@ import java.util.regex.Pattern;
  * @author nguyenlm
  */
 
+// Vi phạm SRP vì lớp này làm hơn 1 nhiệm vụ của nó, thêm những phương thức validate trong nó
+
+
  // Coincidental Cohesion do cac phuong thuc validate khong lien quan trong qua trinh Order,
 // cac phuong thuc validate nen dat trong lop khac
 
 // Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh tu
 
  //SOLID: Vi phạm nguyên lý OCP vì khi số lượng dữ liệu cần xác thực thay đổi thì sẻ phải sửa code trong này
+
 public class PlaceOrderController extends BaseController {
 
     /**
