@@ -1,0 +1,7 @@
+#Coupling:
+    - non-coupling
+
+#Cohesion:
+    - non - cohesion
+
+*nhận xét trên đúng cho các interface trong common/interfaces

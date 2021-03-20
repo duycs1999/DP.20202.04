@@ -42,7 +42,8 @@ public class InterbankPayloadConverter {
 
         return ((MyMap) requestMap).toJSON();
     }
-
+//vi pham nguyen ly OCD 
+    // khi them mot loai phuong thuc thanh toan moi thì phai thay doi
     /**
      * Read the response from interbank server
      * @param responseText
@@ -114,7 +115,7 @@ public class InterbankPayloadConverter {
      * @author hieudm
      * @return the current time as {@link String String}.
      */
-    private String getToday() {
+    private String getToday() { // // coincidental cohesion do khong lien quan den class
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date);

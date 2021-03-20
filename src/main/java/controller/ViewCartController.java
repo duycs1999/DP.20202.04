@@ -8,6 +8,9 @@ import entity.cart.Cart;
  * This class controls the flow of events when users view the Cart
  * @author nguyenlm
  */
+
+ // Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh tu
+ 
 public class ViewCartController extends BaseController{
     
     /**

@@ -36,8 +36,6 @@ import java.util.logging.Logger;
 
 public class LoginScreenHandler extends BaseScreenHandler{
 
-// Common Coupling: Có thể thay đổi được từ bất cứ đâu
-
     public static Logger LOGGER = Utils.getLogger(LoginScreenHandler.class.getName());
 
     @FXML

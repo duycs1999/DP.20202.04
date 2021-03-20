@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 /**
  * @author
  */
-
 public class SessionInformation {
 
     public static User mainUser;

@@ -34,23 +34,24 @@ public class Order {
             orderItems.add(orderItem);
         }
         this.orderMediaList = Collections.unmodifiableList(orderItems);
-        this.subtotal = cart.calSubtotal();
+        this.subtotal = cart.calSubtotal();                               // stamp coupling, truyá»�n Ä‘á»‘i tÆ°á»£ng cart 
+                                                                          // nhÆ°ng chá»‰ sá»­ dá»¥ng calSubtotal();
         this.tax = (int) (ViewsConfig.PERCENT_VAT/100) * subtotal;
     }
 
     public List getListOrderMedia() {
         return this.orderMediaList;
     }
-
+// coincidental cohesion do khong lien quan den class
     public int getShippingFees() {
         if (deliveryInfo == null) return 0;
         return this.shippingFees;
     }
-
+ // coincidental cohesion do khong lien quan den class
     public DeliveryInfo getDeliveryInfo() {
         return deliveryInfo;
     }
-
+ // coincidental cohesion do khong lien quan den class
     public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
         this.deliveryInfo = deliveryInfo;
         this.shippingFees = deliveryInfo.calculateShippingFee(this);
@@ -67,7 +68,7 @@ public class Order {
     public int getTax() {
         return tax;
     }
-
+ // coincidental cohesion do khong lien quan den class
     public int getTotal() {
         return this.subtotal + this.tax + this.shippingFees;
     }
