@@ -152,8 +152,7 @@ public class MyMap extends LinkedHashMap<String, Object> {
 				// get key
 				String key;
 				try {
-					key = getNextTerm(str, i);                             // control coupling do truyền tham số điều khiển 
-					                                                                // tới function getNextTerm
+					key = getNextTerm(str, i);                             
 				} catch (Exception ex) {
 					throw new IllegalArgumentException("Cannot resolve the input.");
 				}

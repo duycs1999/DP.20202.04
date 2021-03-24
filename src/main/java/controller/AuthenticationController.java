@@ -18,6 +18,11 @@ import java.util.Objects;
 /**
  * @author
  */
+
+ // Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh tu
+
+
+ 
 public class AuthenticationController extends BaseController {
 
     public boolean isAnonymousSession() {
