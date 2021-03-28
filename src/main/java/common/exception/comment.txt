@@ -9,4 +9,11 @@
 #Cohesion:
     Đã xử lí được logical cohesion bằng cách viết 1 class cha rồi kế thừa
 
+#SOLID:
+    - Tuân thủ quy tắc SRP
+    Không vi phạm nguyên tắc nào
+
+
 *nhận xét trên đúng cho các class trong common/exception
+
+
