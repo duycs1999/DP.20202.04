@@ -4,9 +4,25 @@ import entity.payment.CreditCard;
 import entity.payment.PaymentTransaction;
 
 public class InterbankSubsystemController {
+	
+	// ap dung Singleton
+	// yeu cau nghiep vu chi can tao mot doi tuong
+	private static InterbankSubsystemController instance=null;
+		
+		private InterbankSubsystemController() {
+			
+		}
+		
+		public static InterbankSubsystemController getInstance() {
+			if (instance==null) instance =new InterbankSubsystemController();
+			return instance;
+		};
+		private static InterbankPayloadConverter interbankPayloadConverter =  InterbankPayloadConverter.getInstance();
+		private static InterbankBoundary interbankBoundary =  InterbankBoundary.getInstance();
+		//
 
-	private static InterbankPayloadConverter interbankPayloadConverter = new InterbankPayloadConverter();
-	private static InterbankBoundary interbankBoundary = new InterbankBoundary();
+//	private static InterbankPayloadConverter interbankPayloadConverter = new InterbankPayloadConverter();
+//	private static InterbankBoundary interbankBoundary = new InterbankBoundary();
 
 	public PaymentTransaction refund(CreditCard card, int amount, String contents) {
 		return null;
