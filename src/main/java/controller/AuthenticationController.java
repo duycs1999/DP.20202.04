@@ -76,7 +76,7 @@ public class AuthenticationController extends BaseController {
             }
             digest = sb.toString();
         } catch (NoSuchAlgorithmException ex) {
-            Utils.getInstance.getLogger(Utils.class.getName());
+            Utils.getInstance().getLogger(Utils.class.getName());
             digest = "";
         }
         return digest;

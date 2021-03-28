@@ -18,7 +18,7 @@ import views.screen.popup.PopupScreen;
 
 public class ResultScreenHandler extends BaseScreenHandler {
 
-	private static final Logger LOGGER = Utils.getInstance.getLogger(PaymentScreenHandler.class.getName());
+	private static final Logger LOGGER = Utils.getInstance().getLogger(PaymentScreenHandler.class.getName());
 
 	private String result;
 	private String message;
