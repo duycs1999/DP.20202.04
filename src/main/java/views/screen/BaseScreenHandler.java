@@ -16,7 +16,7 @@ import views.screen.popup.PopupScreen;
 
 public abstract class BaseScreenHandler extends FXMLScreenHandler {
 
-	private static final Logger LOGGER = Utils.getLogger(BaseScreenHandler.class.getName());
+	private static final Logger LOGGER = Utils.getInstance.getLogger(BaseScreenHandler.class.getName());
 
 
 	private Scene scene;
