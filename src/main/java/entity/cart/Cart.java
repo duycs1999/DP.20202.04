@@ -12,7 +12,7 @@ public class Cart {    // functional cohesion do cac pth lien quan den nhau
     
     private List<CartItem> lstCartItem;
 
-    private Cart() {
+    public Cart() {
         lstCartItem = new ArrayList<>();
     }
     private static Cart cartInstance;
