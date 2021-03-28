@@ -44,7 +44,7 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public void placeOrder() throws SQLException {
-        SessionInformation.getInstance().checkAvailabilityOfProduct();
+        SessionInformation.cartInstance.checkAvailabilityOfProduct();
     }
 
     /**
@@ -53,7 +53,7 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public Order createOrder() throws SQLException {
-        return new Order(SessionInformation.getInstance());
+        return new Order(SessionInformation.cartInstance);
     }
 
     /**

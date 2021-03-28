@@ -110,6 +110,6 @@ public class PaymentController extends BaseController {
 	}
 
 	public void emptyCart(){
-        SessionInformation.getInstance().emptyCart();
+        SessionInformation.cartInstance.emptyCart();
     }
 }
