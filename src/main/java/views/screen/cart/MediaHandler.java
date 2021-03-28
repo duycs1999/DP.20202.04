@@ -27,7 +27,7 @@ import views.screen.ViewsConfig;
 
 public class MediaHandler extends FXMLScreenHandler {
 
-	private static Logger LOGGER = Utils.getLogger(MediaHandler.class.getName());
+	private static Logger LOGGER = Utils.getInstance.getLogger(MediaHandler.class.getName());
 
 	@FXML
 	protected HBox hboxMedia;

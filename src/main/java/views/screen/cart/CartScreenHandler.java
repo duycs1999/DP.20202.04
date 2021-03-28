@@ -27,7 +27,7 @@ import views.screen.popup.PopupScreen;
 import views.screen.shipping.ShippingScreenHandler;
 
 public class CartScreenHandler extends BaseScreenHandler {
-	private static Logger LOGGER = Utils.getLogger(CartScreenHandler.class.getName());
+	private static Logger LOGGER = Utils.getInstance.getLogger(CartScreenHandler.class.getName());
 
 	@FXML
 	private ImageView aimsImage;
