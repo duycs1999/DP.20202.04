@@ -37,7 +37,7 @@ public class PlaceOrderController extends BaseController {
     /**
      * Just for logging purpose
      */
-    private static Logger LOGGER = utils.Utils.getInstance.getLogger(PlaceOrderController.class.getName());
+    private static Logger LOGGER = utils.Utils.getInstance().getLogger(PlaceOrderController.class.getName());
 
     /**
      * This method checks the availability of product when user click PlaceOrder button
