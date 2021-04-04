@@ -15,10 +15,12 @@ public class SessionInformation {
 //    public static LocalDateTime expiredTime;
 
     public static User mainUser;
+
     private static final Cart cartInstance = new Cart();
     public static Cart getInstance() {
         return cartInstance;
     }
+    public static Cart cartInstance =  Cart.getInstance();
     public static LocalDateTime expiredTime;
 
 }
