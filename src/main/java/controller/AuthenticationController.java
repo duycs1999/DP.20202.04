@@ -64,6 +64,7 @@ public class AuthenticationController extends BaseController {
      * @param message - plain text as {@link String String}.
      * @return cipher text as {@link String String}.
      */
+    // md5 ko ro nghia voi mot so nguoi khi chua biet den ma hoa nay, do do ta co the sua lai thanh encryptAlgorithmMd5(String message)
     private String md5(String message) {
         String digest = null;
         try {
