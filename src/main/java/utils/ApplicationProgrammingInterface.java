@@ -18,10 +18,11 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 public class ApplicationProgrammingInterface {
-
+// them 
+	public static int HTTP_OK = 200;
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private static Logger LOGGER = Utils.getInstance().getLogger(Utils.class.getName());
-
+    
 	public static String get(String url, String token) throws Exception {
 		LOGGER.info("Request URL: " + url + "\n");
 		HttpURLConnection conn = setupConnection(url);
@@ -51,7 +52,12 @@ public class ApplicationProgrammingInterface {
 		writer.close();
 		BufferedReader in;
 		String inputLine;
-		if (conn.getResponseCode() / 100 == 2) {
+		// not meaningful
+		//->using searchable names
+		
+		//if (conn.getResponseCode() / 100 == 2) {
+		if (conn.getResponseCode() == HTTP_OK) {
+		//	
 			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		} else {
 			in = new BufferedReader(new InputStreamReader(conn.getErrorStream()));

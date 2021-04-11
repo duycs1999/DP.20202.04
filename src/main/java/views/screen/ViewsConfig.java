@@ -28,7 +28,7 @@ public class ViewsConfig {
     public static final String POPUP_PATH = "/views/fxml/popup.fxml";
 
     public static float PERCENT_VAT = 10;
-
+// 24 nen duoc dat lai thanh ten bien vi du: final int FONT_SIZE = 24;
     public static Font REGULAR_FONT = Font.font("Segoe UI", FontWeight.NORMAL, FontPosture.REGULAR, 24);
 
     public static String getCurrencyFormat(int num) {

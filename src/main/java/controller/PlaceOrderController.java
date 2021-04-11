@@ -98,7 +98,8 @@ public class PlaceOrderController extends BaseController {
         || validateAddress(info.get("address"))) return;
         else throw new InvalidDeliveryInfoException();
     }
-    
+    // nen dat lai final int PHONE_LENGTH = 10;
+    // final string START_PHONE_NUMBER = "0";
     public boolean validatePhoneNumber(String phoneNumber) {
         if (phoneNumber.length() != 10) return false;
         if (!phoneNumber.startsWith("0")) return false;
