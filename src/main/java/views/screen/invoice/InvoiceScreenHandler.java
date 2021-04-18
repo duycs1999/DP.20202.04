@@ -71,21 +71,26 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 		}
 	}
 
-	protected void setupData(Object dto) throws Exception {
-		this.invoice = (Invoice) dto;
-		Order order = invoice.getOrder();
-		DeliveryInfo deliveryInfo = order.getDeliveryInfo();
+	protected void setInfoCustomer(DeliveryInfo deliveryInfo){
 
 		name.setText(deliveryInfo.getName());
 		phone.setText(deliveryInfo.getPhone());
 		province.setText(deliveryInfo.getProvince());
 		instructions.setText(deliveryInfo.getShippingInstructions());
 		address.setText(deliveryInfo.getAddress());
-
+	}
+	protected void setInfoInvoice(Order order){
 		subtotal.setText(ViewsConfig.getCurrencyFormat(order.getSubtotal()));
 		shippingFees.setText(ViewsConfig.getCurrencyFormat(order.getShippingFees()));
 		total.setText(ViewsConfig.getCurrencyFormat(order.getTotal()));
+	}
+	// clean method: ham nay ban dau gom ca setInfo cho ca khach hang va hoa don nen ta tach ra cho gon va de hieu hon
+	protected void setupData(Object dto) throws Exception {
+		this.invoice = (Invoice) dto;
+		Order order = invoice.getOrder();
 
+		setInfoCustomer(order.getDeliveryInfo());
+		setInfoInvoice(order);
 		invoice.getOrder().getListOrderMedia().forEach(orderMedia -> {
 			try {
 				MediaInvoiceScreenHandler mis = new MediaInvoiceScreenHandler(ViewsConfig.INVOICE_MEDIA_SCREEN_PATH);

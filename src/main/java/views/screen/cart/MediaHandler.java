@@ -70,8 +70,7 @@ public class MediaHandler extends FXMLScreenHandler {
 		this.cartItem = cartItem;
 		setMediaInfo();
 	}
-
-	private void setMediaInfo() {
+	private void setCartItem(){
 		title.setText(cartItem.getMedia().getTitle());
 		price.setText(ViewsConfig.getCurrencyFormat(cartItem.getPrice()));
 		File file = new File(cartItem.getMedia().getImageURL());
@@ -80,8 +79,8 @@ public class MediaHandler extends FXMLScreenHandler {
 		image.setPreserveRatio(false);
 		image.setFitHeight(110);
 		image.setFitWidth(92);
-
-		// add delete button
+	}
+	private void setBtnDelete(){
 		btnDelete.setFont(ViewsConfig.REGULAR_FONT);
 		btnDelete.setOnMouseClicked(e -> {
 			try {
@@ -93,6 +92,13 @@ public class MediaHandler extends FXMLScreenHandler {
 				throw new ViewCartException();
 			}
 		});
+	}
+//Clean method: Phuong thuc setMediaInfo luc dau lam ca 2 chuc nang setCart va add delete button nen ta rut gon lai bang cach tao hai ham ben ngoai va goi chung
+	private void setMediaInfo() {
+		setCartItem();
+
+		// add delete button
+		setBtnDelete();
 
 		initializeSpinner();
 	}
