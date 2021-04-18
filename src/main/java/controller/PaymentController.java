@@ -17,14 +17,14 @@ import subsystem.InterbankSubsystem;
 /**
  * This {@code PaymentController} class control the flow of the payment process
  * in our AIMS Software.
- * 
+ *
  * @author hieud
  *
  */
 
 // Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh tu
 
- //SOLID: Vi phạm nguyên lý OCP vì khi thêm phương thức thanh toán sẽ phải sửa lại code ở đây
+//SOLID: Vi phạm nguyên lý OCP vì khi thêm phương thức thanh toán sẽ phải sửa lại code ở đây
 
 
 public class PaymentController extends BaseController {
@@ -43,7 +43,7 @@ public class PaymentController extends BaseController {
 	 * Validate the input date which should be in the format "mm/yy", and then
 	 * return a {@link String String} representing the date in the
 	 * required format "mmyy" .
-	 * 
+	 *
 	 * @param date - the {@link String String} represents the input date
 	 * @return {@link String String} - date representation of the required
 	 *         format
@@ -59,11 +59,13 @@ public class PaymentController extends BaseController {
 		String expirationDate = null;
 		int month = -1;
 		int year = -1;
+		int january = 1;
+		int december = 12 ;
 
 		try {
 			month = Integer.parseInt(strs[0]);
 			year = Integer.parseInt(strs[1]);
-			if (month < 1 || month > 12 || year < Calendar.getInstance().get(Calendar.YEAR) % 100 || year > 100) {
+			if (month < january || month > december || year < Calendar.getInstance().get(Calendar.YEAR) % 100 || year > 100) {
 				throw new InvalidCardException();
 			}
 			expirationDate = strs[0] + strs[1];
@@ -77,7 +79,7 @@ public class PaymentController extends BaseController {
 
 	/**
 	 * Pay order, and then return the result with a message.
-	 * 
+	 *
 	 * @param amount         - the amount to pay
 	 * @param contents       - the transaction contents
 	 * @param cardNumber     - the card number
@@ -88,7 +90,7 @@ public class PaymentController extends BaseController {
 	 *         message.
 	 */
 	public Map<String, String> payOrder(int amount, String contents, String cardNumber, String cardHolderName,
-			String expirationDate, String securityCode) {
+										String expirationDate, String securityCode) {
 		Map<String, String> result = new Hashtable<String, String>();
 		result.put("RESULT", "PAYMENT FAILED!");
 		try {
@@ -110,6 +112,6 @@ public class PaymentController extends BaseController {
 	}
 
 	public void emptyCart(){
-        SessionInformation.cartInstance.emptyCart();
-    }
+		SessionInformation.cartInstance.emptyCart();
+	}
 }
