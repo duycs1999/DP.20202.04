@@ -32,6 +32,9 @@ import java.util.regex.Pattern;
 
  //SOLID: Vi phạm nguyên lý OCP vì khi số lượng dữ liệu cần xác thực thay đổi thì sẻ phải sửa code trong này
 
+
+// code smell :
+// large class : Vừa thực hiện tạo đơn hàng, vừa validate các thông tin. nên tách validate thông tin ra một class riêng trong utils
 public class PlaceOrderController extends BaseController {
 
     /**
