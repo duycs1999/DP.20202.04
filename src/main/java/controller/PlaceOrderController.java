@@ -32,6 +32,13 @@ import java.util.regex.Pattern;
 
  //SOLID: Vi phạm nguyên lý OCP vì khi số lượng dữ liệu cần xác thực thay đổi thì sẻ phải sửa code trong này
 
+/**
+ * CodeSmell:
+ * Large Class: do vừa thực hiện các thao tác tạo đơn hàng, vừa thực hiện các phương thức validate thông tin địa chỉ,
+ * người nhận, số điện thoại
+ * Duplication of code: validateName và validateAddress
+ */
+
 public class PlaceOrderController extends BaseController {
 
     /**

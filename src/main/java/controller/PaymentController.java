@@ -26,6 +26,10 @@ import subsystem.InterbankSubsystem;
 
 //SOLID: Vi phạm nguyên lý OCP vì khi thêm phương thức thanh toán sẽ phải sửa lại code ở đây
 
+/**
+ * Code Smell:
+ * Tangling:
+ */
 
 public class PaymentController extends BaseController {
 

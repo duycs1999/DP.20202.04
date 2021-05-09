@@ -22,6 +22,11 @@ import java.util.Objects;
  // Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh tu
 
 
+/**
+ * Code Smell:
+ * Large class: do vừa thực hiện các phương thức authentication vừa thực hiện giải mã md5
+ */
+
  
 public class AuthenticationController extends BaseController {
 
