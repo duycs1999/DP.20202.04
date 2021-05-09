@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.home.HomeScreenHandler;
 import views.screen.popup.PopupScreen;
-
+// Form Template Method: Vi phan Constructor cua moi Screen deu gom chung phan try catch cho setupData va setupFunctionality cho nen co the dua phan chung nay len tren superClass roi de cac subClass ke thua khi goi Constructor dung super()
 public abstract class BaseScreenHandler extends FXMLScreenHandler {
 
 	private static final Logger LOGGER = Utils.getInstance().getLogger(BaseScreenHandler.class.getName());
@@ -26,9 +26,24 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 	protected Hashtable<String, String> messages;
 	private BaseController bController;
 
-	protected BaseScreenHandler(Stage stage, String screenPath) throws IOException {
+	protected BaseScreenHandler(Stage stage, String screenPath, Object dto) throws IOException {
 		super(screenPath);
 		this.stage = stage;
+		try {
+			if (dto == null) {
+				setupData(null);
+			} else {
+				setupData(dto);
+			}
+
+			setupFunctionality();
+		} catch (IOException ex) {
+			LOGGER.info(ex.getMessage());
+			PopupScreen.error("Error when loading resources.");
+		} catch (Exception ex) {
+			LOGGER.info(ex.getMessage());
+			PopupScreen.error(ex.getMessage());
+		}
 	}
 
 	public void setPreviousScreen(BaseScreenHandler prev) {
@@ -65,6 +80,11 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 
 	public void setHomeScreenHandler(HomeScreenHandler HomeScreenHandler) {
 		this.homeScreenHandler = HomeScreenHandler;
+	}
+	protected void setupData(Object dto) throws Exception {
+	}
+
+	protected void setupFunctionality() throws Exception {
 	}
 
 }

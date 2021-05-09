@@ -22,7 +22,7 @@ public class PopupScreen extends BaseScreenHandler {
     Label message;
 
     public PopupScreen(Stage stage) throws IOException{
-        super(stage, ViewsConfig.POPUP_PATH);
+        super(stage, ViewsConfig.POPUP_PATH, null);
     }
 
     private static PopupScreen popup(String message, String imagePath, Boolean undecorated) throws IOException{
