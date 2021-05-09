@@ -23,6 +23,8 @@ public class DeliveryInfo {
 //vi pham nguyen ly OCP
 // khi thay doi cach tinh phi ship thi phai thay doi 
  // ngoai ra con phu thuoc vao DistanceCalculator, khi thay doi cach tinh bang thu vien moi thi phai thay doi
+    
+ // => code smell : tangling/ Divergent change
     public int calculateShippingFee(Order order) {                           
         int distance = distanceCalculator.calculateDistance(address, province);
         return (int) (distance * 1.2);

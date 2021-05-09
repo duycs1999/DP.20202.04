@@ -7,9 +7,9 @@ import java.util.List;
 import common.exception.MediaNotAvailableException;
 import entity.media.Media;
 
-public class Cart {    // functional cohesion do cac pth lien quan den nhau
+public class Cart {   
+	// code smell : large class
 	
-    
     private List<CartItem> lstCartItem;
 
     private Cart() {

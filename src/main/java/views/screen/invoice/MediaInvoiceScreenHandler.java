@@ -13,7 +13,10 @@ import views.screen.FXMLScreenHandler;
 import views.screen.ViewsConfig;
 
 public class MediaInvoiceScreenHandler extends FXMLScreenHandler{
+	// code smell : tangling
 
+	//lop MediaInvoiceScreenHandler cua views.screen.invoice. 
+	//Khi thay doi cac thuoc tinh trong lop Media thi phai thay doi code hien thi san pham trong lop nay
     @FXML
     private HBox hboxMedia;
 

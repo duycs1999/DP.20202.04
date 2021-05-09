@@ -34,8 +34,10 @@ import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.cart.CartScreenHandler;
 import views.screen.popup.PopupScreen;
+// code smell : tangling
 
-
+//lop HomeScreenHandler và lop MediaHandler cua  views.screen.home  
+//Khi thay doi cac thuoc tinh trong lop Media thi phai thay doi code hien thi san pham trong 2 lop nay
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
     public static Logger LOGGER = Utils.getInstance().getLogger(HomeScreenHandler.class.getName());
