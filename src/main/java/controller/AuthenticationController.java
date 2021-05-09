@@ -21,7 +21,8 @@ import java.util.Objects;
 
  // Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh tu
 
-
+//Code smell :
+// large class: AuthenticationController thực hiện 2 nhiệm vụ. nên tách md5 ra riêng 1 class dùng để encode trong module utils
  
 public class AuthenticationController extends BaseController {
 
