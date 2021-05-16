@@ -2,6 +2,7 @@ package subsystem.interbank;
 
 import common.exception.*;
 import entity.payment.CreditCard;
+import entity.payment.PaymentContext;
 import entity.payment.PaymentTransaction;
 import utils.MyMap;
 
@@ -17,6 +18,7 @@ public class InterbankPayloadConverter {
 ////ap dung Singleton
 	//nghiep vu yeu cau chi can tao ra mot doi tuong duy nhat
 private static InterbankPayloadConverter instance=null;
+    PaymentContext card = new PaymentContext();
 	
 	private InterbankPayloadConverter() {
 		
@@ -55,7 +57,7 @@ private static InterbankPayloadConverter instance=null;
         return ((MyMap) requestMap).toJSON();
     }
 //vi pham nguyen ly OCD 
-    // khi them mot loai phuong thuc thanh toan moi thì phai thay doi
+    // khi them mot loai phuong thuc thanh toan moi thï¿½ phai thay doi
     /**
      * Read the response from interbank server
      * @param responseText
@@ -67,11 +69,11 @@ private static InterbankPayloadConverter instance=null;
         if (response == null)
             return null;
         MyMap transaction = (MyMap) response.get("transaction");
-        CreditCard card = new CreditCard(
+        card.setPaymentStrategy(new CreditCard(
                 (String) transaction.get("cardCode"),
                 (String) transaction.get("owner"),
                 (String) transaction.get("dateExpired"),
-                Integer.parseInt((String) transaction.get("cvvCode")));
+                Integer.parseInt((String) transaction.get("cvvCode"))));
 
         PaymentTransaction trans = new PaymentTransaction(
                 (String) response.get("errorCode"),

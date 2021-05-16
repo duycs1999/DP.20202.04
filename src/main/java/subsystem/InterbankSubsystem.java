@@ -1,6 +1,7 @@
 package subsystem;
 
 import entity.payment.CreditCard;
+import entity.payment.PaymentContext;
 import entity.payment.PaymentTransaction;
 import subsystem.interbank.InterbankSubsystemController;
 
@@ -29,8 +30,7 @@ public class InterbankSubsystem implements InterbankInterface {
 	}
 
 	/**
-	 * @see InterbankInterface#payOrder(CreditCard, int,
-	 *      String)
+	 * @see InterbankInterface#payOrder(PaymentContext, int, String)
 	 */
 
 	// Vi phạm nguyên tắc OCP và DIP vì: tham số CreditCard là một đối tượng cụ thể nên Class đang bị phụ thuộc vào một lớp con cụ thể dẫn đến DIP, cùng với đó là khi mở rộng dùng những phương thức thanh toán khác thì chúng ta rất khó mở rộng và phải sửa đổi code nên vi phạm cả OCP.
@@ -38,7 +38,7 @@ public class InterbankSubsystem implements InterbankInterface {
 	//vi pham nguyen ly OCD
 	// khi them phuong thuc thanh toan moi thi phai thay doi code
 
-	public PaymentTransaction payOrder(CreditCard card, int amount, String contents) {
+	public PaymentTransaction payOrder(PaymentContext card, int amount, String contents) {
 		PaymentTransaction transaction = ctrl.payOrder(card, amount, contents);
 		return transaction;
 	}
