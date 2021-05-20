@@ -1,0 +1,19 @@
+- public interface Observable
+Observable là một thực thể bao bọc nội dung và cho phép quan sát nội dung để tìm những điểm không hợp lệ.
+Việc triển khai Observable có thể hỗ trợ đánh giá lười biếng, có nghĩa là nội dung không được tính toán lại ngay lập tức sau khi thay đổi, nhưng sẽ lười biếng vào lần tiếp theo khi nó được yêu cầu. Tất cả các ràng buộc và thuộc tính trong thư viện này đều hỗ trợ đánh giá lười biếng.
+Việc triển khai lớp này nên cố gắng tạo ra càng ít sự kiện càng tốt để tránh lãng phí quá nhiều thời gian trong trình xử lý sự kiện. Các triển khai trong thư viện này tự đánh dấu là không hợp lệ khi sự kiện vô hiệu đầu tiên xảy ra. Chúng không tạo ra các sự kiện vô hiệu nữa cho đến khi giá trị của chúng được tính lại và hợp lệ trở lại.
+
+Các phương thức:
+
+- void addListener(InvalidationListener listener)
+Thêm một InvalidationListener sẽ được thông báo bất cứ khi nào Observable trở nên không hợp lệ. 
+Nếu cùng một listener được thêm nhiều hơn một lần, thì nó sẽ được thông báo nhiều hơn một lần. 
+Có nghĩa là, không có kiểm tra nào được thực hiện để đảm bảo tính duy nhất.
+Việc Observablelưu trữ một tham chiếu mạnh mẽ đến trình nghe sẽ ngăn trình nghe bị thu thập quá nhiều dữ liệu không cần thiết và có thể dẫn đến rò rỉ bộ nhớ. 
+Nên gọi removeListener sau khi sử dụng hoặc sử dụng một phiên bản WeakInvalidationListener để tránh tình huống này.
+
+- void removeListener(InvalidationListener listener)
+Loại bỏ listener ra khỏi danh sách listener, được thông báo bất cứ khi nào giá trị của giá trị Observable trở nên không hợp lệ.
+Nếu trình nghe nhất định chưa được đăng ký trước đó (tức là nó chưa bao giờ được thêm vào) thì cuộc gọi phương thức này là cấm. 
+Nếu nó đã được thêm trước đó thì nó sẽ bị xóa. 
+Nếu nó đã được thêm nhiều lần, thì chỉ lần xuất hiện đầu tiên sẽ bị xóa.
