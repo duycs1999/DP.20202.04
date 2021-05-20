@@ -17,3 +17,7 @@ Loại bỏ listener ra khỏi danh sách listener, được thông báo bất c
 Nếu trình nghe nhất định chưa được đăng ký trước đó (tức là nó chưa bao giờ được thêm vào) thì cuộc gọi phương thức này là cấm. 
 Nếu nó đã được thêm trước đó thì nó sẽ bị xóa. 
 Nếu nó đã được thêm nhiều lần, thì chỉ lần xuất hiện đầu tiên sẽ bị xóa.
+
+
+So sánh trong CodeBase: 
+- Trong homeScreen, cái item là subject còn HomeScreen là Observer.
