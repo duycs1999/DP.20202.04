@@ -24,7 +24,7 @@ import utils.Utils;
 import views.screen.FXMLScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.popup.PopupScreen;
-
+// Ap dung Observable de cho man hinh Home nhan duoc thong bao khi cac item duoc them vao trong cart
 public class MediaHandler extends FXMLScreenHandler implements Observable {
 
     @FXML

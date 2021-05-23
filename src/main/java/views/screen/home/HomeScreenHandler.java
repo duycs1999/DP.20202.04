@@ -35,7 +35,7 @@ import views.screen.ViewsConfig;
 import views.screen.cart.CartScreenHandler;
 import views.screen.popup.PopupScreen;
 
-
+// HomeScreen se la Observer nhan notify va se update khi co thay doi
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
     public static Logger LOGGER = Utils.getInstance().getLogger(HomeScreenHandler.class.getName());
