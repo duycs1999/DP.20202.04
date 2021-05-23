@@ -18,6 +18,16 @@ Nếu trình nghe nhất định chưa được đăng ký trước đó (tức 
 Nếu nó đã được thêm trước đó thì nó sẽ bị xóa. 
 Nếu nó đã được thêm nhiều lần, thì chỉ lần xuất hiện đầu tiên sẽ bị xóa.
 
+Observable trong javafx là một interface tương ứng như Subject trong mô hình
+Observer là một abstract class, sẽ được Observable đăng ký (add vào) để nhận thông báo khi có sự thay đổi
+ObservableList<E> và ObservableArray<T> là hai implement phổ biến của Observable
+ 
+
+So sánh Observable giữa JavaFX và trong bài học
+Mô hình Observable trong JavaFX giống như mô hình trong bài học, trong đó Observable trong JavaFX đóng vai trò như subject còn Observer trong JavaFX chính là Observer
+
+
 
 So sánh trong CodeBase: 
-- Trong homeScreen, cái item là subject còn HomeScreen là Observer.
+- Trong homeScreen, cái item là subject còn HomeScreen là Observer. Nhiệm vụ chính là gửi thông báo khi người dùng thêm một sản phẩm vào giỏ, thông báo sẽ hiển thị sản phẩm đã được thêm
+- Trong Cart, MediaHandler đóng vai trò như subject còn CartScreenHandler giống như Observer. Nhiệm vụ gửi thông báo khi một sản phẩm bị xóa khỏi giỏ hàng
