@@ -20,23 +20,24 @@ public class Order {
     private int tax;
     private List orderMediaList;
     protected DeliveryInfo deliveryInfo;
-    private State state;
 
-    public State getState() {
-        return state;
-    }
-
-    public void changeState(State state) {
-        this.state = state;
-    }
+    private  State state;
 
     public Order() {
         this.shippingFees = 0;
         this.subtotal = 0;
         this.tax = 0;
-        this.state = new OrderState();
+        this.state = new HoldOn(this);
     }
-
+    public void changeState(State state) {
+        this.state = state;
+    }
+    public void cancelOrder() {
+        state.doCancel();
+    }
+    public void ApprovalOrder() {
+        state.doApproval();
+    }
     public Order(Cart cart) {
         List<OrderItem> orderItems = new ArrayList<>();
         for (Object object : SessionInformation.cartInstance.getListMedia()) {
