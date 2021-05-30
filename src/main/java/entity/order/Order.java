@@ -9,6 +9,9 @@ import views.screen.ViewsConfig;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import entity.state.CancelState;
+import entity.state.OrderState;
+import common.interfaces.State;
 
 public class Order {
 
@@ -17,7 +20,9 @@ public class Order {
     private int tax;
     private List orderMediaList;
     protected DeliveryInfo deliveryInfo;
+
     private  State state;
+
     public Order() {
         this.shippingFees = 0;
         this.subtotal = 0;
@@ -46,6 +51,10 @@ public class Order {
         this.subtotal = cart.calSubtotal();                               // stamp coupling, truyá»�n Ä‘á»‘i tÆ°á»£ng cart 
                                                                           // nhÆ°ng chá»‰ sá»­ dá»¥ng calSubtotal();
         this.tax = (int) (ViewsConfig.PERCENT_VAT/100) * subtotal;
+    }
+
+    public void cancelOrder() {
+        this.changeState(new CancelState());
     }
 
     public List getListOrderMedia() {
