@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class PopupScreen extends BaseScreenHandler {
 
+    private static final float CLOSE_TIME = 0.8f;
     @FXML
     ImageView icon;
 
@@ -53,7 +54,7 @@ public class PopupScreen extends BaseScreenHandler {
 
     public void show(Boolean autoClose) {
         super.show();
-        if (autoClose) close(0.8);
+        if (autoClose) close(CLOSE_TIME);
     }
 
     public void show(double time) {

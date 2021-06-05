@@ -98,7 +98,7 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @throws IllegalArgumentException
 	 */
 	private static String getNextTerm(String str, int idx) {
-		if (str == null || idx >= str.length() || str.charAt(idx) != '"') {
+		if (inputNotResolved(str,idx)) {
 			throw new IllegalArgumentException("Cannot resolve the input.");
 		}
 
@@ -213,4 +213,10 @@ public class MyMap extends LinkedHashMap<String, Object> {
 		return root;
 	}
 
+	private static boolean inputNotResolved(String str, int idx){
+		if(str == null || idx >= str.length() || str.charAt(idx) != '"'){
+			return true;
+		}
+		else return false;
+	}
 }

@@ -4,7 +4,7 @@ import entity.order.Order;
 import org.example.DistanceCalculator;
 
 public class DeliveryInfo {
-
+    private static final float DISTANCE_FACTOR = 1.2f;
     protected String name;
     protected String phone;
     protected String province;
@@ -25,7 +25,7 @@ public class DeliveryInfo {
  // ngoai ra con phu thuoc vao DistanceCalculator, khi thay doi cach tinh bang thu vien moi thi phai thay doi
     public int calculateShippingFee(Order order) {                           
         int distance = distanceCalculator.calculateDistance(address, province);
-        return (int) (distance * 1.2);
+        return (int) (distance * DISTANCE_FACTOR);
     }
 
     public String getName() {
