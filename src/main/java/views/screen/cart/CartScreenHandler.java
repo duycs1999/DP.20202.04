@@ -27,7 +27,7 @@ import views.screen.popup.PopupScreen;
 import views.screen.shipping.ShippingScreenHandler;
 
 public class CartScreenHandler extends BaseScreenHandler {
-	private static Logger LOGGER = Utils.getInstance().getLogger(CartScreenHandler.class.getName());
+	private static Logger LOGGER = Utils.getLogger(CartScreenHandler.class.getName());
 
 	@FXML
 	private ImageView aimsImage;
@@ -94,7 +94,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 	public ViewCartController getBController(){
 		return (ViewCartController) super.getBController();
 	}
-//
+
 	public void requestToViewCart(BaseScreenHandler prevScreen) throws SQLException {
 		setPreviousScreen(prevScreen);
 		setScreenTitle("Cart Screen");

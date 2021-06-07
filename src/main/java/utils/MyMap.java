@@ -120,6 +120,14 @@ public class MyMap extends LinkedHashMap<String, Object> {
 		offset = result.length() + 2; // update iterator with the term and the 2 double quotes
 		return sb.toString();
 	}
+
+	private static boolean inputNotResolved(String str, int idx){
+		if(str == null || idx >= str.length() || str.charAt(idx) != '"'){
+			return true;
+		}
+		else return false;
+	}
+
 	/**
 	 * Return a {@link MyMap MyMap} that represents the interested substring in a {@link String String}.
 	 * 
@@ -152,7 +160,7 @@ public class MyMap extends LinkedHashMap<String, Object> {
 				// get key
 				String key;
 				try {
-					key = getNextTerm(str, i);                             
+					key = getNextTerm(str, i);
 				} catch (Exception ex) {
 					throw new IllegalArgumentException("Cannot resolve the input.");
 				}

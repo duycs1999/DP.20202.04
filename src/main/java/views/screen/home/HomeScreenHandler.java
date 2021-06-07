@@ -38,7 +38,7 @@ import views.screen.popup.PopupScreen;
 
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
-    public static Logger LOGGER = Utils.getInstance().getLogger(HomeScreenHandler.class.getName());
+    public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
 
     @FXML
     private Label numMediaInCart;
@@ -105,7 +105,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
                 this.homeItems.add(m);
             }
         } catch (SQLException | IOException e){
-            LOGGER.info("Errors occured: " + e.getMessage());
+            LOGGER.info("Errors occurred: " + e.getMessage());
             e.printStackTrace();
         }
     }

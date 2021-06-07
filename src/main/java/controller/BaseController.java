@@ -10,11 +10,6 @@ import entity.media.Media;
  * This class is the base controller for our AIMS project
  * @author nguyenlm
  */
-
-// Functional Cohesion
-
-// Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh tu
-
 public class BaseController {
     
     /**

@@ -36,7 +36,7 @@ import java.util.logging.Logger;
 
 public class LoginScreenHandler extends BaseScreenHandler{
 
-    public static Logger LOGGER = Utils.getInstance().getLogger(LoginScreenHandler.class.getName());
+    public static Logger LOGGER = Utils.getLogger(LoginScreenHandler.class.getName());
 
     @FXML
     private TextField email;

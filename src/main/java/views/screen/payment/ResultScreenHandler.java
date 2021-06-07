@@ -18,7 +18,7 @@ import views.screen.popup.PopupScreen;
 
 public class ResultScreenHandler extends BaseScreenHandler {
 
-	private static final Logger LOGGER = Utils.getInstance().getLogger(PaymentScreenHandler.class.getName());
+	private static final Logger LOGGER = Utils.getLogger(PaymentScreenHandler.class.getName());
 
 	private String result;
 	private String message;
@@ -60,8 +60,6 @@ public class ResultScreenHandler extends BaseScreenHandler {
 	@FXML
 	private Label messageLabel;
 
-// Logical Cohesion
-// Vi method nay chi lien quan ve mat logic. Con ve mat chuc nang thi method khong phu hop de dat trong lop nay
 	@FXML
 	void confirmPayment(MouseEvent event) throws IOException {
 		homeScreenHandler.show();

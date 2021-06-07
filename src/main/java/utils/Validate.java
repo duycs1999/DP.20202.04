@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
 
 public class Validate {
 
+    private static final int PHONE_NUMBER_LENGTH = 10;
+
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         if (validatePhoneNumber(info.get("phone"))
                 || validateName(info.get("name"))
@@ -18,7 +20,7 @@ public class Validate {
     }
 
     public boolean validatePhoneNumber(String phoneNumber) {
-        if (phoneNumber.length() != 10) return false;
+        if (phoneNumber.length() != PHONE_NUMBER_LENGTH) return false;
         if (!phoneNumber.startsWith("0")) return false;
         try {
             Integer.parseInt(phoneNumber);
