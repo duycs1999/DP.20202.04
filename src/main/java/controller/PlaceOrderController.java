@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.Logger;
 import utils.Validate;
+import entity.shipping.AdapterNewDistance;
 
 /**
  * This class controls the flow of place order usecase in our AIMS project
@@ -79,7 +80,7 @@ public class PlaceOrderController extends BaseController {
                 String.valueOf(info.get("province")),
                 String.valueOf(info.get("address")),
                 String.valueOf(info.get("instructions")),
-                new DistanceCalculator());
+                new AdapterNewDistance());
         System.out.println(deliveryInfo.getProvince());
         return deliveryInfo;
     }
