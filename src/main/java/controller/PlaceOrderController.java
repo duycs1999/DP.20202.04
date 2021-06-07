@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.Logger;
-import tools.Validate;
+import utils.Validate;
 
 /**
  * This class controls the flow of place order usecase in our AIMS project
