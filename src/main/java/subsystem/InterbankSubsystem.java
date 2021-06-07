@@ -23,21 +23,13 @@ public class InterbankSubsystem implements InterbankInterface {
 	 * represents an Interbank subsystem.
 	 */
 	public InterbankSubsystem() {
-//		this.ctrl = new InterbankSubsystemController();
-		//sua lai
-		this.ctrl =  InterbankSubsystemController.getInstance();
+		this.ctrl = new InterbankSubsystemController();
 	}
 
 	/**
 	 * @see InterbankInterface#payOrder(CreditCard, int,
 	 *      String)
 	 */
-
-	// Vi phạm nguyên tắc OCP và DIP vì: tham số CreditCard là một đối tượng cụ thể nên Class đang bị phụ thuộc vào một lớp con cụ thể dẫn đến DIP, cùng với đó là khi mở rộng dùng những phương thức thanh toán khác thì chúng ta rất khó mở rộng và phải sửa đổi code nên vi phạm cả OCP.
-		
-	//vi pham nguyen ly OCD
-	// khi them phuong thuc thanh toan moi thi phai thay doi code
-
 	public PaymentTransaction payOrder(CreditCard card, int amount, String contents) {
 		PaymentTransaction transaction = ctrl.payOrder(card, amount, contents);
 		return transaction;

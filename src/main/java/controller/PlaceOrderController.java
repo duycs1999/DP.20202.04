@@ -21,23 +21,12 @@ import java.util.regex.Pattern;
  * This class controls the flow of place order usecase in our AIMS project
  * @author nguyenlm
  */
-
-// Vi phạm SRP vì lớp này làm hơn 1 nhiệm vụ của nó, thêm những phương thức validate trong nó
-
-
- // Coincidental Cohesion do cac phuong thuc validate khong lien quan trong qua trinh Order,
-// cac phuong thuc validate nen dat trong lop khac
-
-// Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh tu
-
- //SOLID: Vi phạm nguyên lý OCP vì khi số lượng dữ liệu cần xác thực thay đổi thì sẻ phải sửa code trong này
-
 public class PlaceOrderController extends BaseController {
 
     /**
      * Just for logging purpose
      */
-    private static Logger LOGGER = utils.Utils.getInstance().getLogger(PlaceOrderController.class.getName());
+    private static Logger LOGGER = utils.Utils.getLogger(PlaceOrderController.class.getName());
 
     /**
      * This method checks the availability of product when user click PlaceOrder button

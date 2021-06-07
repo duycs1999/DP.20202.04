@@ -14,19 +14,7 @@ import java.util.Map;
  * @author
  */
 public class InterbankPayloadConverter {
-////ap dung Singleton
-	//nghiep vu yeu cau chi can tao ra mot doi tuong duy nhat
-private static InterbankPayloadConverter instance=null;
-	
-	private InterbankPayloadConverter() {
-		
-	}
-	
-	public static InterbankPayloadConverter getInstance() {
-		if (instance==null) instance =new InterbankPayloadConverter();
-		return instance;
-	};
-	//
+
     /**
      * Convert from native entity into interbank required format
      * @param card
@@ -54,8 +42,7 @@ private static InterbankPayloadConverter instance=null;
 
         return ((MyMap) requestMap).toJSON();
     }
-//vi pham nguyen ly OCD 
-    // khi them mot loai phuong thuc thanh toan moi thì phai thay doi
+
     /**
      * Read the response from interbank server
      * @param responseText
@@ -127,7 +114,7 @@ private static InterbankPayloadConverter instance=null;
      * @author hieudm
      * @return the current time as {@link String String}.
      */
-    private String getToday() { // // coincidental cohesion do khong lien quan den class
+    private String getToday() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date);

@@ -18,11 +18,6 @@ import java.util.Objects;
 /**
  * @author
  */
-
- // Procedural Cohesion do cac phuong thuc duoc nhom lai vi chung thuc thi theo trinh tu
-
-
- 
 public class AuthenticationController extends BaseController {
 
     public boolean isAnonymousSession() {
@@ -76,7 +71,7 @@ public class AuthenticationController extends BaseController {
             }
             digest = sb.toString();
         } catch (NoSuchAlgorithmException ex) {
-            Utils.getInstance().getLogger(Utils.class.getName());
+            Utils.getLogger(Utils.class.getName());
             digest = "";
         }
         return digest;

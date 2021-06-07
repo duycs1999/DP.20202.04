@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class ApplicationProgrammingInterface {
 
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-	private static Logger LOGGER = Utils.getInstance().getLogger(Utils.class.getName());
+	private static Logger LOGGER = Utils.getLogger(Utils.class.getName());
 
 	public static String get(String url, String token) throws Exception {
 		LOGGER.info("Request URL: " + url + "\n");
@@ -63,8 +63,7 @@ public class ApplicationProgrammingInterface {
 		LOGGER.info("Respone Info: " + response.toString());
 		return response.toString();
 	}
-// Coincidence cohesion
-// Vi method nay duong nhu khong lien quan gi den cac phuong thuc hay thuoc tinh khac, nhung cai ma deu cung chung muc dich chuc nang cho lop nay	
+
 	private static HttpURLConnection setupConnection(String url) throws IOException {
 		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 		conn.setDoInput(true);
