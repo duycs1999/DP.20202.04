@@ -13,6 +13,7 @@ import java.util.Map;
 /**
  * @author
  */
+
 public class InterbankPayloadConverter {
 
     private static final String Success = "00";
@@ -23,6 +24,28 @@ public class InterbankPayloadConverter {
     private static final String NotEnoughTransactionInfo = "05";
     private static final String InvalidVersion = "06";
     private static final String InvalidTransactionAmount = "07";
+
+////ap dung Singleton
+	//nghiep vu yeu cau chi can tao ra mot doi tuong duy nhat
+private static InterbankPayloadConverter instance=null;
+	
+	private InterbankPayloadConverter() {
+		
+	}
+	
+	public static InterbankPayloadConverter getInstance() {
+		if (instance==null) instance =new InterbankPayloadConverter();
+		return instance;
+	};
+	//
+    /**
+     * Convert from native entity into interbank required format
+     * @param card
+     * @param amount
+     * @param contents
+     * @return
+     */
+
     String convertToRequestPayload(CreditCard card, int amount, String contents) {
         Map<String, Object> transaction = new MyMap();
 

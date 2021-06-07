@@ -221,4 +221,10 @@ public class MyMap extends LinkedHashMap<String, Object> {
 		return root;
 	}
 
+	private static boolean inputNotResolved(String str, int idx){
+		if(str == null || idx >= str.length() || str.charAt(idx) != '"'){
+			return true;
+		}
+		else return false;
+	}
 }
