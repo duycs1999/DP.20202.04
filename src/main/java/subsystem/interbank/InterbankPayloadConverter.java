@@ -29,7 +29,7 @@ public class InterbankPayloadConverter {
 	//nghiep vu yeu cau chi can tao ra mot doi tuong duy nhat
 private static InterbankPayloadConverter instance=null;
 	
-	private InterbankPayloadConverter() {
+	InterbankPayloadConverter() {
 		
 	}
 	
