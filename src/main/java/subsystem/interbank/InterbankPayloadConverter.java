@@ -15,13 +15,14 @@ import java.util.Map;
  */
 public class InterbankPayloadConverter {
 
-    /**
-     * Convert from native entity into interbank required format
-     * @param card
-     * @param amount
-     * @param contents
-     * @return
-     */
+    private static final String Success = "00";
+    private static final String InvalidCard = "01";
+    private static final String NotEnoughBalance = "02";
+    private static final String InternalServerError = "03";
+    private static final String SuspiciousTransaction = "04";
+    private static final String NotEnoughTransactionInfo = "05";
+    private static final String InvalidVersion = "06";
+    private static final String InvalidTransactionAmount = "07";
     String convertToRequestPayload(CreditCard card, int amount, String contents) {
         Map<String, Object> transaction = new MyMap();
 
@@ -69,21 +70,21 @@ public class InterbankPayloadConverter {
                 (String) transaction.get("createdAt"));
 
         switch (trans.getErrorCode()) {
-            case "00":
+            case Success:
                 break;
-            case "01":
+            case InvalidCard:
                 throw new InvalidCardException();
-            case "02":
+            case NotEnoughBalance:
                 throw new NotEnoughBalanceException();
-            case "03":
+            case InternalServerError:
                 throw new InternalServerErrorException();
-            case "04":
+            case SuspiciousTransaction:
                 throw new SuspiciousTransactionException();
-            case "05":
+            case NotEnoughTransactionInfo:
                 throw new NotEnoughTransactionInfoException();
-            case "06":
+            case InvalidVersion:
                 throw new InvalidVersionException();
-            case "07":
+            case InvalidTransactionAmount:
                 throw new InvalidTransactionAmountException();
             default:
                 throw new UnrecognizedException();
