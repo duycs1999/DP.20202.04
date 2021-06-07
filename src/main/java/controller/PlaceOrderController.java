@@ -9,6 +9,8 @@ import entity.order.OrderItem;
 import entity.shipping.DeliveryInfo;
 import entity.shipping.ShippingConfigs;
 import org.example.DistanceCalculator;
+import org.example.AlternativeDistanceCalculator;
+import entity.shipping.AdapterDistanceCalculator;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -64,15 +66,15 @@ public class PlaceOrderController extends BaseController {
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
         validate.validateDeliveryInfo(info);
-        DeliveryInfo deliveryInfo = new DeliveryInfo(
+        AdapterDistanceCalculator adapterDistanceCalculator = new AdapterDistanceCalculator(
                 String.valueOf(info.get("name")),
                 String.valueOf(info.get("phone")),
                 String.valueOf(info.get("province")),
                 String.valueOf(info.get("address")),
                 String.valueOf(info.get("instructions")),
-                new DistanceCalculator());
-        System.out.println(deliveryInfo.getProvince());
-        return deliveryInfo;
+                new AlternativeDistanceCalculator());
+        System.out.println(adapterDistanceCalculator.getProvince());
+        return adapterDistanceCalculator;
     }
 
 }
