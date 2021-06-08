@@ -18,23 +18,13 @@ import views.screen.popup.PopupScreen;
 
 public class ResultScreenHandler extends BaseScreenHandler {
 
-	private static final Logger LOGGER = Utils.getInstance().getLogger(PaymentScreenHandler.class.getName());
+	private static final Logger LOGGER = Utils.getLogger(PaymentScreenHandler.class.getName());
 
 	private String result;
 	private String message;
 
 	public ResultScreenHandler(Stage stage, String screenPath, Map<String, String> response) throws IOException {
-		super(stage, screenPath);
-		try {
-			setupData(response);
-			setupFunctionality();
-		} catch (IOException ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error("Error when loading resources.");
-		} catch (Exception ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error(ex.getMessage());
-		}
+		super(stage, screenPath,response);
 	}
 
 
@@ -60,8 +50,6 @@ public class ResultScreenHandler extends BaseScreenHandler {
 	@FXML
 	private Label messageLabel;
 
-// Logical Cohesion
-// Vi method nay chi lien quan ve mat logic. Con ve mat chuc nang thi method khong phu hop de dat trong lop nay
 	@FXML
 	void confirmPayment(MouseEvent event) throws IOException {
 		homeScreenHandler.show();

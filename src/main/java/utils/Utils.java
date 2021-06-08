@@ -10,18 +10,13 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Logger;
 
-
-
-/**
- * @author nguyenlm Contains helper functions
- */
 //Lop Utils chua Logger ghi lai nhat ky cua he thong ma cac Logger nay chi nen co mot diem truy cap chung va khi thuc hien tac vu ghi nhat ky chi can tao mot doi tuong duy nhat cho nen phu hop voi Singleton
 
 public class Utils {
-	
+
 	private static Utils _instance;
 	private Utils() {
-		
+
 	}
 	public static synchronized Utils getInstance() {
 		if (_instance == null) {
@@ -29,6 +24,7 @@ public class Utils {
 		}
 		return _instance;
 	}
+
 	public static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	private static Logger LOGGER = getLogger(Utils.class.getName());
 	static {

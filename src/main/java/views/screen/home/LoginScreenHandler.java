@@ -36,7 +36,7 @@ import java.util.logging.Logger;
 
 public class LoginScreenHandler extends BaseScreenHandler{
 
-    public static Logger LOGGER = Utils.getInstance().getLogger(LoginScreenHandler.class.getName());
+    public static Logger LOGGER = Utils.getLogger(LoginScreenHandler.class.getName());
 
     @FXML
     private TextField email;
@@ -45,21 +45,11 @@ public class LoginScreenHandler extends BaseScreenHandler{
     private PasswordField password;
 
     public LoginScreenHandler(Stage stage, String screenPath) throws IOException{
-        super(stage, screenPath);
-        try {
-            setupData(null);
-            setupFunctionality();
-        } catch (IOException ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error("Error when loading resources.");
-        } catch (Exception ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error(ex.getMessage());
-        }
+        super(stage, screenPath, null);
     }
 
     public AuthenticationController getBController() {
-        return (AuthenticationController) super.getBController();
+        return (AuthenticationController) super.getBaseController();
     }
 
     protected void setupData(Object dto) throws Exception {

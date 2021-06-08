@@ -27,11 +27,10 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
-// Procedural cohesion
-// Cac methods trong lop thu chien theo lan luot tung cong viec mot cua qua trinh xu ly Ship, do do no vi pham Procedural cohesion
+
 public class ShippingScreenHandler extends BaseScreenHandler {
 
-	private static final Logger LOGGER = Utils.getInstance().getLogger(ShippingScreenHandler.class.getName());
+	private static final Logger LOGGER = Utils.getLogger(ShippingScreenHandler.class.getName());
 
 	@FXML
 	private Label screenTitle;
@@ -54,17 +53,7 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 	private Order order;
 
 	public ShippingScreenHandler(Stage stage, String screenPath, Order order) throws IOException {
-		super(stage, screenPath);
-		try {
-			setupData(order);
-			setupFunctionality();
-		} catch (IOException ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error("Error when loading resources.");
-		} catch (Exception ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error(ex.getMessage());
-		}
+		super(stage, screenPath, order);
 	}
 
 	protected void setupData(Object dto) throws Exception {
@@ -91,12 +80,12 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		preprocessDeliveryInfo();
 		
 		// create invoice screen
-		Invoice invoice = getBController().createInvoice(order);
+		Invoice invoice = getBaseController().createInvoice(order);
 		BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, ViewsConfig.INVOICE_SCREEN_PATH, invoice);
 		InvoiceScreenHandler.setPreviousScreen(this);
 		InvoiceScreenHandler.setHomeScreenHandler(homeScreenHandler);
 		InvoiceScreenHandler.setScreenTitle("Invoice Screen");
-		InvoiceScreenHandler.setBController(getBController());
+		InvoiceScreenHandler.setBaseController(getBaseController());
 		InvoiceScreenHandler.show();
 	}
 
@@ -111,7 +100,7 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		DeliveryInfo deliveryInfo;
 		try {
 			// process and validate delivery info
-			deliveryInfo = getBController().processDeliveryInfo(messages);
+			deliveryInfo = getBaseController().processDeliveryInfo(messages);
 		} catch (InvalidDeliveryInfoException e) {
 			// TODO: implement pop up screen
 			throw new InvalidDeliveryInfoException(e.getMessage());
@@ -120,8 +109,8 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		order.setDeliveryInfo(deliveryInfo);
 	}
 
-	public PlaceOrderController getBController(){
-		return (PlaceOrderController) super.getBController();
+	public PlaceOrderController getBaseController(){
+		return (PlaceOrderController) super.getBaseController();
 	}
 
 	public void notifyError(){

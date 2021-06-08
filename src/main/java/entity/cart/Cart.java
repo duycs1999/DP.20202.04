@@ -7,21 +7,12 @@ import java.util.List;
 import common.exception.MediaNotAvailableException;
 import entity.media.Media;
 
-public class Cart {    // functional cohesion do cac pth lien quan den nhau
-	
+public class Cart {
     
     private List<CartItem> lstCartItem;
 
-    private Cart() {
+    public Cart() {
         lstCartItem = new ArrayList<>();
-    }
-    private static Cart cartInstance;
-
-    public static Cart getInstance(){
-        if(cartInstance==null){
-            cartInstance = new Cart();
-        }
-        return cartInstance;
     }
 
     public void addCartMedia(CartItem cm){
@@ -39,7 +30,6 @@ public class Cart {    // functional cohesion do cac pth lien quan den nhau
     public void emptyCart(){
         lstCartItem.clear();
     }
-
 
     public int getTotalMedia(){
         int total = 0;
@@ -70,8 +60,7 @@ public class Cart {    // functional cohesion do cac pth lien quan den nhau
         if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
 
-    public CartItem checkMediaInCart(Media media){                             // stamp coupling do truyá»�n tham sá»‘ Ä‘á»‘i tÆ°á»£ng 
-    	                                                                       // media nhÆ°ng chá»‰ dÃ¹ng má»—i phÆ°Æ¡ng thá»©c getId()
+    public CartItem checkMediaInCart(Media media){
         for (CartItem cartItem : lstCartItem) {
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;
         }

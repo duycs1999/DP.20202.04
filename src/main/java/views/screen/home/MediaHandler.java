@@ -45,7 +45,7 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
     @FXML
     protected Button addToCartBtn;
 
-    private static Logger LOGGER = Utils.getInstance().getLogger(MediaHandler.class.getName());
+    private static Logger LOGGER = Utils.getLogger(MediaHandler.class.getName());
     private Media media;
     private List<Observer> observerList;
 

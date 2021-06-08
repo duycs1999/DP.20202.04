@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 
 public class PaymentScreenHandler extends BaseScreenHandler {
 
-	private static final Logger LOGGER = Utils.getInstance().getLogger(PaymentScreenHandler.class.getName());
+	private static final Logger LOGGER = Utils.getLogger(PaymentScreenHandler.class.getName());
 
 	@FXML
 	private Button btnConfirmPayment;
@@ -45,17 +45,7 @@ public class PaymentScreenHandler extends BaseScreenHandler {
 	private TextField securityCode;
 
 	public PaymentScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
-		super(stage, screenPath);
-		try {
-			setupData(invoice);
-			setupFunctionality();
-		} catch (IOException ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error("Error when loading resources.");
-		} catch (Exception ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error(ex.getMessage());
-		}
+		super(stage, screenPath, invoice);
 	}
 
 	protected void setupData(Object dto) throws Exception {
@@ -66,7 +56,7 @@ public class PaymentScreenHandler extends BaseScreenHandler {
 		btnConfirmPayment.setOnMouseClicked(e -> {
 			try {
 				confirmToPayOrder();
-				((PaymentController) getBController()).emptyCart();
+				((PaymentController) getBaseController()).emptyCart();
 			} catch (Exception exp) {
 				System.out.println(exp.getStackTrace());
 			}
@@ -75,7 +65,7 @@ public class PaymentScreenHandler extends BaseScreenHandler {
 
 	void confirmToPayOrder() throws IOException{
 		String contents = "pay order";
-		PaymentController ctrl = (PaymentController) getBController();
+		PaymentController ctrl = (PaymentController) getBaseController();
 		Map<String, String> response = ctrl.payOrder(invoice.getAmount(), contents, cardNumber.getText(), holderName.getText(),
 				expirationDate.getText(), securityCode.getText());
 

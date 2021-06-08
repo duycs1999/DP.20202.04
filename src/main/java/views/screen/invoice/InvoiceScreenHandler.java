@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 
 public class InvoiceScreenHandler extends BaseScreenHandler {
 
-	private static Logger LOGGER = Utils.getInstance().getLogger(InvoiceScreenHandler.class.getName());
+	private static Logger LOGGER = Utils.getLogger(InvoiceScreenHandler.class.getName());
 
 	@FXML
 	private Label pageTitle;
@@ -58,17 +58,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 	private Invoice invoice;
 
 	public InvoiceScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
-		super(stage, screenPath);
-		try {
-			setupData(invoice);
-			setupFunctionality();
-		} catch (IOException ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error("Error when loading resources.");
-		} catch (Exception ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error(ex.getMessage());
-		}
+		super(stage, screenPath, invoice);
 	}
 
 	protected void setupData(Object dto) throws Exception {
@@ -105,7 +95,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 	@FXML
 	void confirmInvoice(MouseEvent event) throws IOException {
 		BaseScreenHandler paymentScreen = new PaymentScreenHandler(this.stage, ViewsConfig.PAYMENT_SCREEN_PATH, invoice);
-		paymentScreen.setBController(new PaymentController());
+		paymentScreen.setBaseController(new PaymentController());
 		paymentScreen.setPreviousScreen(this);
 		paymentScreen.setHomeScreenHandler(homeScreenHandler);
 		paymentScreen.setScreenTitle("Payment Screen");

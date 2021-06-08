@@ -27,7 +27,7 @@ import views.screen.popup.PopupScreen;
 import views.screen.shipping.ShippingScreenHandler;
 
 public class CartScreenHandler extends BaseScreenHandler {
-	private static Logger LOGGER = Utils.getInstance().getLogger(CartScreenHandler.class.getName());
+	private static Logger LOGGER = Utils.getLogger(CartScreenHandler.class.getName());
 
 	@FXML
 	private ImageView aimsImage;
@@ -54,16 +54,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 	private Button btnPlaceOrder;
 
 	public CartScreenHandler(Stage stage, String screenPath) throws IOException {
-		super(stage, screenPath);
-		try {
-			setupFunctionality();
-		} catch (IOException ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error("Error when loading resources.");
-		} catch (Exception ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error(ex.getMessage());
-		}
+		super(stage, screenPath, null);
 	}
 
 	protected void setupFunctionality() throws Exception {
@@ -92,9 +83,9 @@ public class CartScreenHandler extends BaseScreenHandler {
 	}
 
 	public ViewCartController getBController(){
-		return (ViewCartController) super.getBController();
+		return (ViewCartController) super.getBaseController();
 	}
-//
+
 	public void requestToViewCart(BaseScreenHandler prevScreen) throws SQLException {
 		setPreviousScreen(prevScreen);
 		setScreenTitle("Cart Screen");
@@ -126,7 +117,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 			shippingScreenHandler.setPreviousScreen(this);
 			shippingScreenHandler.setHomeScreenHandler(homeScreenHandler);
 			shippingScreenHandler.setScreenTitle("Shipping Screen");
-			shippingScreenHandler.setBController(placeOrderController);
+			shippingScreenHandler.setBaseController(placeOrderController);
 			shippingScreenHandler.show();
 
 		} catch (MediaNotAvailableException e) {

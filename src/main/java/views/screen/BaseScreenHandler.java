@@ -16,7 +16,7 @@ import views.screen.popup.PopupScreen;
 
 public abstract class BaseScreenHandler extends FXMLScreenHandler {
 
-	private static final Logger LOGGER = Utils.getInstance().getLogger(BaseScreenHandler.class.getName());
+	private static final Logger LOGGER = Utils.getLogger(BaseScreenHandler.class.getName());
 
 
 	private Scene scene;
@@ -24,11 +24,26 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 	protected final Stage stage;
 	protected HomeScreenHandler homeScreenHandler;
 	protected Hashtable<String, String> messages;
-	private BaseController bController;
+	private BaseController baseController;
 
-	protected BaseScreenHandler(Stage stage, String screenPath) throws IOException {
+	protected BaseScreenHandler(Stage stage, String screenPath, Object dto) throws IOException {
 		super(screenPath);
 		this.stage = stage;
+		try {
+			if (dto == null) {
+				setupData(null);
+			} else {
+				setupData(dto);
+			}
+
+			setupFunctionality();
+		} catch (IOException ex) {
+			LOGGER.info(ex.getMessage());
+			PopupScreen.error("Error when loading resources.");
+		} catch (Exception ex) {
+			LOGGER.info(ex.getMessage());
+			PopupScreen.error(ex.getMessage());
+		}
 	}
 
 	public void setPreviousScreen(BaseScreenHandler prev) {
@@ -51,12 +66,12 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 		this.stage.setTitle(string);
 	}
 
-	public void setBController(BaseController bController){
-		this.bController = bController;
+	public void setBaseController(BaseController baseController){
+		this.baseController = baseController;
 	}
 
-	public BaseController getBController(){
-		return this.bController;
+	public BaseController getBaseController(){
+		return this.baseController;
 	}
 
 	public void forward(Hashtable messages) {
@@ -67,4 +82,9 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 		this.homeScreenHandler = HomeScreenHandler;
 	}
 
+	protected void setupData(Object dto) throws Exception {
+	}
+
+	protected void setupFunctionality() throws Exception {
+	}
 }

@@ -17,25 +17,14 @@ import views.screen.popup.PopupScreen;
 
 public class IntroScreenHandler extends BaseScreenHandler {
 
-    private static final Logger LOGGER = Utils.getInstance().getLogger(IntroScreenHandler.class.getName());
+    private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName());
 
 
     @FXML
     ImageView logo;
 
     public IntroScreenHandler(Stage stage, String screenPath) throws IOException {
-        super(stage, screenPath);
-
-        try {
-            setupData(null);
-            setupFunctionality();
-        } catch (IOException ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error("Error when loading resources.");
-        } catch (Exception ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error(ex.getMessage());
-        }
+        super(stage, screenPath, null);
     }
 
 

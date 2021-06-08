@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class Media {
 
-    private static Logger LOGGER = Utils.getInstance().getLogger(Media.class.getName());
+    private static Logger LOGGER = Utils.getLogger(Media.class.getName());
 
     protected Statement stm;
     protected int id;
@@ -27,7 +27,7 @@ public class Media {
     protected String imageURL;
     protected boolean rushSupported;
 
-    public Media() throws SQLException{
+    public Media() throws SQLException {
         stm = AIMSDB.getConnection().createStatement();
     }
 

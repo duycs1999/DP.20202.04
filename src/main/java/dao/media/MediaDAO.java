@@ -12,8 +12,6 @@ import java.util.List;
 /**
  * @author
  */
-
-  // Coincidental Cohesion , phuong thuc updateMediaFieldById nen dat trong lop khac
 public class MediaDAO {
 
     public List getAllMedia() throws SQLException {
@@ -52,9 +50,8 @@ public class MediaDAO {
         return null;
     }
 
-// chưa thấy dùng tới tbname. String tbname,
-    
-    public void updateMediaFieldById( int id, String field, Object value) throws SQLException {
+
+    public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
         Statement stm = AIMSDB.getConnection().createStatement();
         if (value instanceof String){
             value = "\"" + value + "\"";
