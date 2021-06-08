@@ -138,9 +138,13 @@ private static InterbankPayloadConverter instance=null;
      * @author hieudm
      * @return the current time as {@link String String}.
      */
-    private String getToday() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-        return dateFormat.format(date);
-    }
+    
+    //  coincidental cohesion
+    // phuong thuc nay khong lien quan den cac phuong thuc khac
+    // chuyen sang class khac
+//    private String getToday() {
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        Date date = new Date();
+//        return dateFormat.format(date);
+//    }
 }

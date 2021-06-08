@@ -17,15 +17,24 @@ public class BaseController {
      * @param media
      * @return CartMedia or null
      */
-    public CartItem checkMediaInCart(Media media){
-        return SessionInformation.cartInstance.checkMediaInCart(media);
-    }
+	
+	// common coupling
+		// su dung truc tiep cac thuoc tinh static cua class SessionInformation
+//	    public CartItem checkMediaInCart(Media media){
+//	       // return SessionInformation.cartInstance.checkMediaInCart(media);
+//	    	return Cart.getInstance().checkMediaInCart(media);
+//	    }
+	    public CartItem checkMediaInCart(int id){
+		       // return SessionInformation.cartInstance.checkMediaInCart(media);
+		    	return Cart.getInstance().checkMediaInCart(id);
+		    }
 
-    /**
-     * This method gets the list of items in cart
-     * @return List[CartMedia]
-     */
-    public List getListCartMedia(){
-        return SessionInformation.cartInstance.getListMedia();
-    }
+	    /**
+	     * This method gets the list of items in cart
+	     * @return List[CartMedia]
+	     */
+	    public List getListCartMedia(){
+	       // return SessionInformation.cartInstance.getListMedia();
+	    	return Cart.getInstance().getListMedia();
+	    }
 }
