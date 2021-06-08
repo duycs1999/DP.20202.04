@@ -56,6 +56,8 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		super(stage, screenPath, order);
 	}
 
+	// common coupling
+	// phuong thuc su dung bien Global cua ShippingConfigs
 	protected void setupData(Object dto) throws Exception {
 		this.order = (Order) dto;
 		this.province.getItems().addAll(ShippingConfigs.PROVINCES);

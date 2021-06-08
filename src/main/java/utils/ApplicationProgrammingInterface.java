@@ -72,6 +72,8 @@ public class ApplicationProgrammingInterface {
 		return conn;
 	}
 
+	// content coupling
+	// phuong thuc co su dung setAccessible(true) de thay doi quyen truy cap vao data
 	private static void allowMethods(String... methods) {
 		try {
 			Field methodsField = HttpURLConnection.class.getDeclaredField("methods");

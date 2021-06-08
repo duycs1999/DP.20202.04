@@ -9,11 +9,23 @@ import entity.media.Media;
 
 public class Cart {
     
-    private List<CartItem> lstCartItem;
+	private List<CartItem> lstCartItem;
 
-    public Cart() {
-        lstCartItem = new ArrayList<>();
-    }
+	 //   public Cart() {
+	// implement singleton pattern
+	    private Cart() {
+	        lstCartItem = new ArrayList<>();
+	    }
+	    //
+	    private static Cart cartInstance;
+
+	    public static Cart getInstance(){
+	        if(cartInstance==null){
+	            cartInstance = new Cart();
+	        }
+	        return cartInstance;
+	    }
+	    //
 
     public void addCartMedia(CartItem cm){
         lstCartItem.add(cm);
@@ -60,9 +72,17 @@ public class Cart {
         if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
 
-    public CartItem checkMediaInCart(Media media){
+ // stamp coupling
+    // phuong thuc chi su dung ket qua phuong thuc getId() cua doi tuong media
+//    public CartItem checkMediaInCart(Media media){
+//        for (CartItem cartItem : lstCartItem) {
+//            if (cartItem.getMedia().getId() == media.getId()) return cartItem;
+//        }
+//        return null;
+//    }
+    public CartItem checkMediaInCart(int id){ //id=media.getId()
         for (CartItem cartItem : lstCartItem) {
-            if (cartItem.getMedia().getId() == media.getId()) return cartItem;
+            if (cartItem.getMedia().getId() == id) return cartItem;
         }
         return null;
     }

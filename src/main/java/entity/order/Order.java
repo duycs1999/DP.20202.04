@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
+// communicational cohesion
+// cac phuong thuc ben trong class su dung chung thuoc tinh de thuc hien luong cong viec
+
 public class Order {
 
     private int shippingFees;
@@ -39,9 +43,29 @@ public class Order {
         this.state.doApproval();
     }
 
-    public Order(Cart cart) {
+ // stamp coupling
+    // phuong thuc nay chi can gia tri phuong thuc CalSubtotal() cua doi tuong cart
+    
+//    public Order(Cart cart) {
+//        List<OrderItem> orderItems = new ArrayList<>();
+//       // for (Object object : SessionInformation.cartInstance.getListMedia()) {
+//       // for (Object object : SessionInformation.getInstance().getCartInstance().getListMedia()) {
+//        for (Object object : Cart.getInstance().getListMedia()) {
+//            CartItem cartItem = (CartItem) object;
+//            OrderItem orderItem = new OrderItem(cartItem.getMedia(),
+//                    cartItem.getQuantity(),
+//                    cartItem.getPrice());
+//            orderItems.add(orderItem);
+//        }
+//        this.orderMediaList = Collections.unmodifiableList(orderItems);
+//        this.subtotal = cart.calSubtotal();
+//        this.tax = (int) (ViewsConfig.PERCENT_VAT/100) * subtotal;
+//    }
+    public Order(int subTotal) { // subTotal = cart.calSubtotal()
         List<OrderItem> orderItems = new ArrayList<>();
-        for (Object object : SessionInformation.cartInstance.getListMedia()) {
+       // for (Object object : SessionInformation.cartInstance.getListMedia()) {
+       // for (Object object : SessionInformation.getInstance().getCartInstance().getListMedia()) {
+        for (Object object : Cart.getInstance().getListMedia()) {
             CartItem cartItem = (CartItem) object;
             OrderItem orderItem = new OrderItem(cartItem.getMedia(),
                     cartItem.getQuantity(),
@@ -49,7 +73,7 @@ public class Order {
             orderItems.add(orderItem);
         }
         this.orderMediaList = Collections.unmodifiableList(orderItems);
-        this.subtotal = cart.calSubtotal();
+        this.subtotal = subTotal;
         this.tax = (int) (ViewsConfig.PERCENT_VAT/100) * subtotal;
     }
 

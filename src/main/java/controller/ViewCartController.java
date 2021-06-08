@@ -14,17 +14,20 @@ public class ViewCartController extends BaseController{
      * This method checks the available products in Cart
      * @throws SQLException
      */
-    public void checkAvailabilityOfProduct() throws SQLException{
-        SessionInformation.cartInstance.checkAvailabilityOfProduct();
-    }
+	public void checkAvailabilityOfProduct() throws SQLException{
+	       // SessionInformation.cartInstance.checkAvailabilityOfProduct();
+	    	Cart.getInstance().checkAvailabilityOfProduct();
+	    
+	    }
 
     /**
      * This method calculates the cart subtotal
      * @return subtotal
      */
     public int getCartSubtotal(){
-        int subtotal = SessionInformation.cartInstance.calSubtotal();
-        return subtotal;
-    }
+        // int subtotal = SessionInformation.cartInstance.calSubtotal();
+     	int subtotal = Cart.getInstance().calSubtotal();
+         return subtotal;
+     }
 
 }

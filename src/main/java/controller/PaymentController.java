@@ -95,7 +95,10 @@ public class PaymentController extends BaseController {
 		return result;
 	}
 
+	// common coupling
+	// su sung truc tiep cac thuoc tinh static cua class SessionInformation
 	public void emptyCart(){
-        SessionInformation.cartInstance.emptyCart();
+        //SessionInformation.cartInstance.emptyCart();
+		Cart.getInstance().emptyCart();
     }
 }

@@ -82,6 +82,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         return (HomeController) super.getBController();
     }
 
+    // stamp coupling 
+    // tham so dto chua duoc su dung
     protected void setupData(Object dto) throws Exception {
         setBController(new HomeController());
         this.authenticationController = new AuthenticationController();
@@ -134,7 +136,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             btnLogin.setOnMouseClicked(event -> {});
         }
 
-        numMediaInCart.setText(String.valueOf(SessionInformation.cartInstance.getListMedia().size()) + " media");
+        //numMediaInCart.setText(String.valueOf(SessionInformation.cartInstance.getListMedia().size()) + " media");
+        // numMediaInCart.setText(String.valueOf(SessionInformation.getInstance().getCartInstance().getListMedia().size()) + " media");
+         numMediaInCart.setText(String.valueOf(Cart.getInstance().getListMedia().size()) + " media");
         super.show();
     }
 
@@ -203,15 +207,21 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         if (observable instanceof MediaHandler) update((MediaHandler) observable);
     }
 
-    private void update(MediaHandler mediaHandler) {
-        int requestQuantity = mediaHandler.getRequestQuantity();
-        Media media = mediaHandler.getMedia();
-
+ // stamp coupling 
+    // phuong thuc nay chi can hai phuong thuc getRequestQuantity() vs getMedia() cua doi tuong mediaHandler
+    
+   // private void update(MediaHandler mediaHandler) {
+    private void update(int reqQuantity,Media med ){// reqQuantity =mediaHandler.getRequestQuantity(); med =mediaHandler.getMedia();
+//        int requestQuantity = mediaHandler.getRequestQuantity();
+//        Media media = mediaHandler.getMedia();
+          int requestQuantity = reqQuantity;
+           Media media = med;
         try {
             if (requestQuantity > media.getQuantity()) throw new MediaNotAvailableException();
-            Cart cart = SessionInformation.cartInstance;
+         // Cart cart = SessionInformation.cartInstance;
+            Cart cart = Cart.getInstance();
             // if media already in cart then we will increase the quantity by 1 instead of create the new cartMedia
-            CartItem mediaInCart = getBController().checkMediaInCart(media);
+            CartItem mediaInCart = getBController().checkMediaInCart(media.getId());
             if (mediaInCart != null) {
                 mediaInCart.setQuantity(mediaInCart.getQuantity() + 1);
             } else {

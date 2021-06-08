@@ -32,8 +32,11 @@ public class MediaDAO {
         return medium;
     }
 
+ // stamp coupling 
+    // tham so id khong duoc su dung khi truyen vao
     public Media getMediaById(int id) throws SQLException {
-        String sql = "SELECT * FROM Media ;";
+        //String sql = "SELECT * FROM Media ;";
+    	String sql = "SELECT * FROM Media" + " where id=" + id +";"; // refactor
         Statement stm = AIMSDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(sql);
 
@@ -50,9 +53,13 @@ public class MediaDAO {
         return null;
     }
 
-
-    public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
-        Statement stm = AIMSDB.getConnection().createStatement();
+// stamp coupling
+    // tham so tbname khong duoc su dung khi truyen vao
+    
+    //public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
+    public void updateMediaFieldById( int id, String field, Object value) throws SQLException {   //refactor
+    
+    	Statement stm = AIMSDB.getConnection().createStatement();
         if (value instanceof String){
             value = "\"" + value + "\"";
         }
