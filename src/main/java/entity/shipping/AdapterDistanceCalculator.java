@@ -1,12 +1,13 @@
 package entity.shipping;
 
-import org.example.AlternativeDistanceCalculator;
+import common.interfaces.DistanceCalculatorInterface;
+import org.example.DistanceCalculator;
 
-public class AdapterDistanceCalculator extends DeliveryInfo{
-    private AlternativeDistanceCalculator alternativeDistanceCalculator;
+public class AdapterDistanceCalculator implements DistanceCalculatorInterface {
+    DistanceCalculator distanceCalculator = new DistanceCalculator();
 
-    public AdapterDistanceCalculator(String name, String phone, String province, String address, String shippingInstructions, AlternativeDistanceCalculator alternativeDistanceCalculator) {
-        super(name, phone, province, address, shippingInstructions, null);
-        this.alternativeDistanceCalculator = alternativeDistanceCalculator;
+    @Override
+    public int calculateDistance(String province, String address) {
+        return distanceCalculator.calculateDistance(address, province);
     }
 }
