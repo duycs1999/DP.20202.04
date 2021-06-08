@@ -82,12 +82,12 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		preprocessDeliveryInfo();
 		
 		// create invoice screen
-		Invoice invoice = getBController().createInvoice(order);
+		Invoice invoice = getBaseController().createInvoice(order);
 		BaseScreenHandler InvoiceScreenHandler = new InvoiceScreenHandler(this.stage, ViewsConfig.INVOICE_SCREEN_PATH, invoice);
 		InvoiceScreenHandler.setPreviousScreen(this);
 		InvoiceScreenHandler.setHomeScreenHandler(homeScreenHandler);
 		InvoiceScreenHandler.setScreenTitle("Invoice Screen");
-		InvoiceScreenHandler.setBController(getBController());
+		InvoiceScreenHandler.setBaseController(getBaseController());
 		InvoiceScreenHandler.show();
 	}
 
@@ -102,7 +102,7 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		DeliveryInfo deliveryInfo;
 		try {
 			// process and validate delivery info
-			deliveryInfo = getBController().processDeliveryInfo(messages);
+			deliveryInfo = getBaseController().processDeliveryInfo(messages);
 		} catch (InvalidDeliveryInfoException e) {
 			// TODO: implement pop up screen
 			throw new InvalidDeliveryInfoException(e.getMessage());
@@ -111,8 +111,8 @@ public class ShippingScreenHandler extends BaseScreenHandler {
 		order.setDeliveryInfo(deliveryInfo);
 	}
 
-	public PlaceOrderController getBController(){
-		return (PlaceOrderController) super.getBController();
+	public PlaceOrderController getBaseController(){
+		return (PlaceOrderController) super.getBaseController();
 	}
 
 	public void notifyError(){

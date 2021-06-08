@@ -49,7 +49,7 @@ public class LoginScreenHandler extends BaseScreenHandler{
     }
 
     public AuthenticationController getBController() {
-        return (AuthenticationController) super.getBController();
+        return (AuthenticationController) super.getBaseController();
     }
 
     protected void setupData(Object dto) throws Exception {

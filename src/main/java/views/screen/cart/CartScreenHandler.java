@@ -83,7 +83,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 	}
 
 	public ViewCartController getBController(){
-		return (ViewCartController) super.getBController();
+		return (ViewCartController) super.getBaseController();
 	}
 
 	public void requestToViewCart(BaseScreenHandler prevScreen) throws SQLException {
@@ -117,7 +117,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 			shippingScreenHandler.setPreviousScreen(this);
 			shippingScreenHandler.setHomeScreenHandler(homeScreenHandler);
 			shippingScreenHandler.setScreenTitle("Shipping Screen");
-			shippingScreenHandler.setBController(placeOrderController);
+			shippingScreenHandler.setBaseController(placeOrderController);
 			shippingScreenHandler.show();
 
 		} catch (MediaNotAvailableException e) {

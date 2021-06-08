@@ -78,17 +78,17 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         return this.numMediaInCart;
     }
 
-    public HomeController getBController() {
-        return (HomeController) super.getBController();
+    public HomeController getBaseController() {
+        return (HomeController) super.getBaseController();
     }
 
     // stamp coupling 
     // tham so dto chua duoc su dung
     protected void setupData(Object dto) throws Exception {
-        setBController(new HomeController());
+        setBaseController(new HomeController());
         this.authenticationController = new AuthenticationController();
         try{
-            List medium = getBController().getAllMedia();
+            List medium = getBaseController().getAllMedia();
             this.homeItems = new ArrayList<>();
             for (Object object : medium) {
                 Media media = (Media)object;
@@ -114,7 +114,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
                 LOGGER.info("User clicked to view cart");
                 cartScreen = new CartScreenHandler(this.stage, ViewsConfig.CART_SCREEN_PATH);
                 cartScreen.setHomeScreenHandler(this);
-                cartScreen.setBController(new ViewCartController());
+                cartScreen.setBaseController(new ViewCartController());
                 cartScreen.requestToViewCart(this);
             } catch (IOException | SQLException e1) {
                 throw new ViewCartException(Arrays.toString(e1.getStackTrace()).replaceAll(", ", "\n"));
@@ -221,7 +221,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
          // Cart cart = SessionInformation.cartInstance;
             Cart cart = Cart.getInstance();
             // if media already in cart then we will increase the quantity by 1 instead of create the new cartMedia
-            CartItem mediaInCart = getBController().checkMediaInCart(media.getId());
+            CartItem mediaInCart = getBaseController().checkMediaInCart(media.getId());
             if (mediaInCart != null) {
                 mediaInCart.setQuantity(mediaInCart.getQuantity() + 1);
             } else {
@@ -254,7 +254,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         try {
             BaseScreenHandler loginScreen = new LoginScreenHandler(this.stage, ViewsConfig.LOGIN_SCREEN_PATH);
             loginScreen.setHomeScreenHandler(this);
-            loginScreen.setBController(this.authenticationController);
+            loginScreen.setBaseController(this.authenticationController);
             loginScreen.show();
         } catch (Exception ex) {
             try {
