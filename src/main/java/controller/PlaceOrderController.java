@@ -3,13 +3,8 @@ package controller;
 import common.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
 import entity.order.Order;
-
+import entity.shipping.AdapterAlternativeDistanceCalculator;
 import entity.shipping.DeliveryInfo;
-
-import org.example.DistanceCalculator;
-import org.example.AlternativeDistanceCalculator;
-import entity.shipping.AdapterDistanceCalculator;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
@@ -64,15 +59,15 @@ public class PlaceOrderController extends BaseController {
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
         validate.validateDeliveryInfo(info);
-        AdapterDistanceCalculator adapterDistanceCalculator = new AdapterDistanceCalculator(
+        DeliveryInfo deliveryInfo = new DeliveryInfo(
                 String.valueOf(info.get("name")),
                 String.valueOf(info.get("phone")),
                 String.valueOf(info.get("province")),
                 String.valueOf(info.get("address")),
                 String.valueOf(info.get("instructions")),
-                new AlternativeDistanceCalculator());
-        System.out.println(adapterDistanceCalculator.getProvince());
-        return adapterDistanceCalculator;
+                new AdapterAlternativeDistanceCalculator());
+        System.out.println(deliveryInfo.getProvince());
+        return deliveryInfo;
     }
 
 }
