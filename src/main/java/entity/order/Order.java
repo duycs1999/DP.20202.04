@@ -17,11 +17,26 @@ public class Order {
     private int tax;
     private List orderMediaList;
     protected DeliveryInfo deliveryInfo;
-
+    private  State state;
     public Order() {
         this.shippingFees = 0;
         this.subtotal = 0;
         this.tax = 0;
+        this.state = new DefaultState();
+    }
+    public void changeState(State state) {
+        this.state = state;
+    }
+    public void defaultOrder() {
+        this.state.doDefault();
+        changeState(new HoldOn());
+        this.state.doHoldOn();
+    }
+    public void cancelOrder() {
+        this.state.doCancel();
+    }
+    public void approvalOrder() {
+        this.state.doApproval();
     }
 
     public Order(Cart cart) {

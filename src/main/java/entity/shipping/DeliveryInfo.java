@@ -12,6 +12,7 @@ public class DeliveryInfo {
     protected String province;
     protected String address;
     protected String shippingInstructions;
+    private ICalculateStrategy strategy;
     protected DistanceCalculatorInterface distanceCalculatorInterface;
 
     public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, DistanceCalculatorInterface distanceCalculatorInterface) {
@@ -21,6 +22,11 @@ public class DeliveryInfo {
         this.address = address;
         this.shippingInstructions = shippingInstructions;
         this.distanceCalculatorInterface = distanceCalculatorInterface;
+        // Mac dinh ban dau van se su dung theo phuong thuc cu, Muon thay doi chi can setCalculateStrategy
+        setCalculateStrategy(new OldCalculateFee());
+    }
+    public void setCalculateStrategy(ICalculateStrategy strategy) {
+        this.strategy = strategy;
     }
 
 //vi pham nguyen ly OCP
@@ -28,7 +34,8 @@ public class DeliveryInfo {
  // ngoai ra con phu thuoc vao DistanceCalculator, khi thay doi cach tinh bang thu vien moi thi phai thay doi
     public int calculateShippingFee(Order order) {
         int distance = distanceCalculatorInterface.calculateDistance(province,address);
-        return (int) (distance * DISTANCE_FACTOR);
+        int cost = this.strategy.calculateFee(order,distance);
+        return (int) (cost * DISTANCE_FACTOR);
     }
 
     public String getName() {
