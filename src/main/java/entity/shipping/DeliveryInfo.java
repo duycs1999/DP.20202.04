@@ -32,6 +32,16 @@ public class DeliveryInfo {
 //vi pham nguyen ly OCP
 // khi thay doi cach tinh phi ship thi phai thay doi 
  // ngoai ra con phu thuoc vao DistanceCalculator, khi thay doi cach tinh bang thu vien moi thi phai thay doi
+    
+ // stamp coupling
+    // phuong thuc nay khong can cac thong tin nao cua doi tuong order
+    
+    //public int calculateShippingFee(Order order) {
+//    public int calculateShippingFee() { // refactor
+//        int distance = distanceCalculator.calculateDistance(address, province);
+//        return (int) (distance * 1.2);
+//    }
+    
     public int calculateShippingFee(Order order) {
         int distance = distanceCalculatorInterface.calculateDistance(province,address);
         int cost = this.strategy.calculateFee(order,distance);
