@@ -3,6 +3,7 @@ package subsystem.interbank;
 import common.exception.*;
 import entity.payment.CreditCard;
 import entity.payment.PaymentTransaction;
+import utils.GetToday;
 import utils.MyMap;
 
 import java.text.DateFormat;
@@ -48,7 +49,7 @@ private static InterbankPayloadConverter instance=null;
 
     String convertToRequestPayload(CreditCard card, int amount, String contents) {
         Map<String, Object> transaction = new MyMap();
-
+//GetToday today = new GetToday();
         try {
             transaction.putAll(MyMap.toMyMap(card));
         } catch (IllegalArgumentException | IllegalAccessException e) {
@@ -141,10 +142,10 @@ private static InterbankPayloadConverter instance=null;
     
     //  coincidental cohesion
     // phuong thuc nay khong lien quan den cac phuong thuc khac
-    // chuyen sang class khac
-//    private String getToday() {
-//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        Date date = new Date();
-//        return dateFormat.format(date);
-//    }
+    
+  private String getToday() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+       return dateFormat.format(date);
+   }
 }
