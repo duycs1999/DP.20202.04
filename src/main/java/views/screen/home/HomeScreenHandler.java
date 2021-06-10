@@ -210,12 +210,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
  // stamp coupling 
     // phuong thuc nay chi can hai phuong thuc getRequestQuantity() vs getMedia() cua doi tuong mediaHandler
     
-   // private void update(MediaHandler mediaHandler) {
-    private void update(int reqQuantity,Media med ){// reqQuantity =mediaHandler.getRequestQuantity(); med =mediaHandler.getMedia();
-//        int requestQuantity = mediaHandler.getRequestQuantity();
-//        Media media = mediaHandler.getMedia();
-          int requestQuantity = reqQuantity;
-           Media media = med;
+    private void update(MediaHandler mediaHandler) {
+        int requestQuantity = mediaHandler.getRequestQuantity();
+        Media media = mediaHandler.getMedia();
         try {
             if (requestQuantity > media.getQuantity()) throw new MediaNotAvailableException();
          // Cart cart = SessionInformation.cartInstance;
